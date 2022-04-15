@@ -17,8 +17,8 @@ const NavMenu = () => {
     <StyledNav>
       <StyledUl>
         <MenuLink textValue="About" />
-        <MenuLink textValue="Creators Page" />
-        <MenuLink textValue="Marvel Api" />
+        <MenuLink textValue="Creator's WEB" />
+        <MenuLink textValue="Marvel API" />
       </StyledUl>
     </StyledNav>
   );

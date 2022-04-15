@@ -13,6 +13,7 @@ const StyledInput = styled.input`
   width: 400px;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  outline: none;
 `;
 
 const SearchBar = () => {
