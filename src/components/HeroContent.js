@@ -3,34 +3,34 @@ import HeroContext from "../context/HeroContext";
 import styled from "styled-components";
 
 const Section = styled.section`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   /* background-color: black; */
+  height: 100%;
+  background: url(../assets/img/background.jpg);
 `;
 const ImgContainer = styled.div`
-  display: inherit;
+  display: flex;
   justify-content: center;
   align-items: center;
-  background-color: bisque;
   margin: 20px;
-  box-shadow: -5px 5px 10px 0px black;
 `;
 const Img = styled.img`
-  max-height: 400px;
-  width: auto;
+  height: 90%;
+  width: 90%;
   background-color: white;
   object-fit: cover;
+  box-shadow: -5px 5px 10px 0px black;
 `;
 const DescContainer = styled.div`
-  display: inherit;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  width: 40%;
-  height: 400px;
-  background-color: beige;
+  margin: 20px;
 `;
 const Description = styled.div`
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -54,13 +54,13 @@ const Description = styled.div`
   p {
     font-size: 2rem;
     text-align: justify;
-    line-height: 3rem;
+    line-height: 2.8rem;
   }
 `;
 
 const HeroContent = () => {
   const { heroData } = useContext(HeroContext);
-  const imgSizes = ["detail", "portrait_uncanny"];
+  const imgSizes = ["/detail", "/portrait_uncanny", ""];
 
   useEffect(() => {
     if (heroData) console.log(heroData.data);
@@ -69,16 +69,17 @@ const HeroContent = () => {
   return (
     <Section>
       <ImgContainer>
-        <picture>
-          <source
-            srcSet={
-              heroData
-                ? `${heroData.data.results[0].thumbnail.path}/${imgSizes[0]}.jpg`
-                : ""
-            }
-          />
-          <Img alt="character" />
-        </picture>
+        <Img
+          src={
+            heroData
+              ? `${heroData.data.results[0].thumbnail.path.replace(
+                  "http",
+                  "https"
+                )}${imgSizes[2]}.jpg`
+              : ""
+          }
+          alt="character"
+        />
       </ImgContainer>
       <DescContainer>
         <Description>

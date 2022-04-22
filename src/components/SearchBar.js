@@ -12,13 +12,17 @@ const StyledContainer = styled.div`
 const StyledInput = styled.input`
   background-color: white;
   height: 30px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 0px;
   width: 400px;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 2rem;
   outline: none;
+
+  ::placeholder {
+    color: lightgray;
+  }
 `;
 
 const SearchBar = () => {
