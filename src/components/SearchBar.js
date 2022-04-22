@@ -35,7 +35,11 @@ const SearchBar = () => {
       const url = `${sURL.baseUrl}${character}${sURL.ts}${sURL.publicKey}${sURL.md5Hash}`;
       helpHttp()
         .get(url)
-        .then((res) => setHeroData(res));
+        .then((res) => {
+          if (res.data.results[0]) {
+            setHeroData(res);
+          }
+        });
     }
   };
 
