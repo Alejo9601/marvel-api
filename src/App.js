@@ -1,11 +1,14 @@
 import Header from "./components/Header";
 import HeroContent from "./components/HeroContent";
+import { HeroProvider } from "./context/HeroContext";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <HeroContent />
+      <HeroProvider>
+        <Header />
+        <HeroContent />
+      </HeroProvider>
     </div>
   );
 }

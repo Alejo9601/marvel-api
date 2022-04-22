@@ -1,4 +1,7 @@
+import { useContext, useEffect } from "react";
 import styled from "styled-components";
+import HeroContext from "../context/HeroContext";
+import sURL from "../assets/json/settingsUrl.json";
 import { helpHttp } from "../helpers/helpHttp";
 
 const StyledContainer = styled.div`
@@ -19,14 +22,16 @@ const StyledInput = styled.input`
 `;
 
 const SearchBar = () => {
+  const { setHeroData } = useContext(HeroContext);
+
   const handleOnChange = (event) => {
     let tecla = document.all ? event.keyCode : event.which;
-    if (tecla == 13) {
+    if (tecla === 13) {
       const character = event.target.value;
-      const url = `https://gateway.marvel.com/v1/public/characters?name=${character}&ts=1000&apikey=e44e037f0d22efbd00cfba40ebaa087c&hash=03354bd7271cb5b03618c27e91b3da61`;
+      const url = `${sURL.baseUrl}${character}${sURL.ts}${sURL.publicKey}${sURL.md5Hash}`;
       helpHttp()
-        .get(url, { mode: "cors" })
-        .then((res) => console.log(res));
+        .get(url)
+        .then((res) => setHeroData(res));
     }
   };
 

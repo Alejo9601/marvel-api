@@ -1,61 +1,96 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import HeroContext from "../context/HeroContext";
 import styled from "styled-components";
 
-const StyledSection = styled.section`
+const Section = styled.section`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: black;
+  /* background-color: black; */
 `;
-
-const StyledImgContainer = styled.div`
+const ImgContainer = styled.div`
   display: inherit;
   justify-content: center;
   align-items: center;
-  width: 40%;
-  height: 400px;
   background-color: bisque;
   margin: 20px;
+  box-shadow: -5px 5px 10px 0px black;
 `;
-
-const StyledImg = styled.img`
-  width: 100%;
-  height: 100%;
+const Img = styled.img`
+  max-height: 400px;
+  width: auto;
   background-color: white;
+  object-fit: cover;
 `;
-
 const DescContainer = styled.div`
   display: inherit;
   justify-content: center;
   align-items: center;
   width: 40%;
   height: 400px;
-  background-color: white;
+  background-color: beige;
 `;
+const Description = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
 
-const StyledDescription = styled.div`
-  height: 200px;
-  width: 200px;
-  background-color: red;
+  h1,
+  p {
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: lighter;
+    padding: 5px;
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 3rem;
+    width: inherit;
+    text-align: center;
+  }
+
+  p {
+    font-size: 2rem;
+    text-align: justify;
+    line-height: 3rem;
+  }
 `;
 
 const HeroContent = () => {
-  const hero = useContext(HeroContext);
-  // const imgUrl = hero.thumbnail.path + hero.extension;
+  const { heroData } = useContext(HeroContext);
+  const imgSizes = ["detail", "portrait_uncanny"];
+
+  useEffect(() => {
+    if (heroData) console.log(heroData.data);
+  }, [heroData]);
 
   return (
-    <StyledSection>
-      <StyledImgContainer>
+    <Section>
+      <ImgContainer>
         <picture>
-          {/* <source srcSet={hero.thumbnail} /> */}
-          <StyledImg alt="character" />
+          <source
+            srcSet={
+              heroData
+                ? `${heroData.data.results[0].thumbnail.path}/${imgSizes[0]}.jpg`
+                : ""
+            }
+          />
+          <Img alt="character" />
         </picture>
-      </StyledImgContainer>
+      </ImgContainer>
       <DescContainer>
-        <StyledDescription></StyledDescription>
+        <Description>
+          <h1> Description </h1>
+          <p>
+            {heroData
+              ? heroData.data.results[0].description
+              : "No character description"}
+          </p>
+        </Description>
       </DescContainer>
-    </StyledSection>
+    </Section>
   );
 };
 
