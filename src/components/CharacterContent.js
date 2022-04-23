@@ -52,21 +52,21 @@ const Description = styled.div`
 `;
 
 const HeroContent = () => {
-  const { heroData } = useContext(CharacterContext);
+  const { charData } = useContext(CharacterContext);
 
   return (
     <Section>
-      {heroData ? (
+      {charData ? (
         <>
-          {heroData.data.results[0] ? (
+          {charData.data.results[0] ? (
             <>
-              <CharacterImage heroData={heroData} />
+              <CharacterImage heroData={charData} />
               <DescContainer>
                 <Description>
                   <h1> Description </h1>
                   <p>
-                    {heroData
-                      ? heroData.data.results[0].description
+                    {charData
+                      ? charData.data.results[0].description
                       : "No character description"}
                   </p>
                 </Description>

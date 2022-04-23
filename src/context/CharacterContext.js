@@ -15,8 +15,8 @@ const HeroProvider = ({ children }) => {
   }, []);
 
   const data = {
-    heroData: charData,
-    setHeroData: setCharData,
+    charData,
+    setCharData,
   };
 
   return <HeroContext.Provider value={data}>{children}</HeroContext.Provider>;
