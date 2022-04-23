@@ -30,7 +30,7 @@ const SearchBar = () => {
 
   const handleOnChange = (event) => {
     let tecla = document.all ? event.keyCode : event.which;
-    if (tecla === 13) {
+    if (tecla === 13 && event.target.value !== "") {
       const character = event.target.value;
       const url = `${sURL.baseUrl}${character}${sURL.ts}${sURL.publicKey}${sURL.md5Hash}`;
       helpHttp()
