@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import HeroContext from "../context/HeroContext";
 import styled from "styled-components";
+import Loader from "./Loader";
 
 const Section = styled.section`
   display: grid;
@@ -14,11 +15,11 @@ const ImgContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: 20px;
+  /* background-color: gray; */
 `;
 const Img = styled.img`
   height: 90%;
   width: 90%;
-  background-color: white;
   object-fit: cover;
   box-shadow: -5px 5px 10px 0px black;
 `;
@@ -28,6 +29,8 @@ const DescContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin: 20px;
+  /* background-color: gray; */
+  padding-right: 25px;
 `;
 const Description = styled.div`
   margin-top: 25px;
@@ -68,29 +71,35 @@ const HeroContent = () => {
 
   return (
     <Section>
-      <ImgContainer>
-        <Img
-          src={
-            heroData
-              ? `${heroData.data.results[0].thumbnail.path.replace(
-                  "http",
-                  "https"
-                )}${imgSizes[2]}.jpg`
-              : ""
-          }
-          alt="character"
-        />
-      </ImgContainer>
-      <DescContainer>
-        <Description>
-          <h1> Description </h1>
-          <p>
-            {heroData
-              ? heroData.data.results[0].description
-              : "No character description"}
-          </p>
-        </Description>
-      </DescContainer>
+      {heroData ? (
+        <>
+          <ImgContainer>
+            <Img
+              src={
+                heroData
+                  ? `${heroData.data.results[0].thumbnail.path.replace(
+                      "http",
+                      "https"
+                    )}${imgSizes[2]}.jpg`
+                  : ""
+              }
+              alt="character"
+            />
+          </ImgContainer>
+          <DescContainer>
+            <Description>
+              <h1> Description </h1>
+              <p>
+                {heroData
+                  ? heroData.data.results[0].description
+                  : "No character description"}
+              </p>
+            </Description>
+          </DescContainer>
+        </>
+      ) : (
+        <Loader></Loader>
+      )}
     </Section>
   );
 };
