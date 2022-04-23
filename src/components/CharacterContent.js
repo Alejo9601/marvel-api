@@ -1,5 +1,5 @@
-import { useContext, useEffect } from "react";
-import HeroContext from "../context/HeroContext";
+import { useContext } from "react";
+import CharacterContext from "../context/CharacterContext";
 import styled from "styled-components";
 import Loader from "./Loader";
 import Message from "./Message";
@@ -63,7 +63,7 @@ const Description = styled.div`
 `;
 
 const HeroContent = () => {
-  const { heroData } = useContext(HeroContext);
+  const { heroData } = useContext(CharacterContext);
   const imgSizes = ["/detail", "/portrait_uncanny", ""];
 
   return (

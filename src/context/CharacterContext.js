@@ -5,18 +5,18 @@ import sURL from "../assets/json/settingsUrl.json";
 const HeroContext = createContext();
 
 const HeroProvider = ({ children }) => {
-  const [heroData, setHeroData] = useState();
+  const [charData, setCharData] = useState();
 
   useEffect(() => {
     const url = `${sURL.baseUrl}hulk${sURL.ts}${sURL.publicKey}${sURL.md5Hash}`;
     helpHttp()
       .get(url)
-      .then((res) => setHeroData(res));
+      .then((res) => setCharData(res));
   }, []);
 
   const data = {
-    heroData,
-    setHeroData,
+    heroData: charData,
+    setHeroData: setCharData,
   };
 
   return <HeroContext.Provider value={data}>{children}</HeroContext.Provider>;

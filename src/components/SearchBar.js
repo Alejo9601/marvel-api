@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import HeroContext from "../context/HeroContext";
+import CharacterContent from "../context/CharacterContext";
 import sURL from "../assets/json/settingsUrl.json";
 import { helpHttp } from "../helpers/helpHttp";
 
@@ -26,7 +26,7 @@ const Input = styled.input`
 `;
 
 const SearchBar = () => {
-  const { setHeroData } = useContext(HeroContext);
+  const { setCharData } = useContext(CharacterContent);
 
   const handleOnChange = (event) => {
     let tecla = document.all ? event.keyCode : event.which;
@@ -37,7 +37,7 @@ const SearchBar = () => {
         .get(url)
         .then((res) => {
           event.target.value = "";
-          setHeroData(res);
+          setCharData(res);
         });
     }
   };

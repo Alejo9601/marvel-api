@@ -1,13 +1,13 @@
 import Header from "./components/Header";
-import HeroContent from "./components/HeroContent";
-import { HeroProvider } from "./context/HeroContext";
+import CharacterContent from "./components/CharacterContent";
+import { HeroProvider } from "./context/CharacterContext";
 
 function App() {
   return (
     <div className="App">
       <HeroProvider>
         <Header />
-        <HeroContent />
+        <CharacterContent />
       </HeroProvider>
     </div>
   );
