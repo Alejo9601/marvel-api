@@ -24,7 +24,9 @@ const StyledLi = styled.li`
 const MenuLink = ({ textValue, refTo }) => {
   return (
     <StyledLi>
-      <a href={refTo}>{textValue}</a>
+      <a href={refTo} target="_blank">
+        {textValue}
+      </a>
     </StyledLi>
   );
 };
