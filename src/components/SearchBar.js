@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import HeroContext from "../context/HeroContext";
 import sURL from "../assets/json/settingsUrl.json";
