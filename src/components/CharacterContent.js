@@ -12,6 +12,10 @@ const Section = styled.section`
   /* background-color: black; */
   height: 100%;
   background: url(../assets/img/background.jpg);
+
+  @media (max-width: 550px) {
+    grid-template-columns: 1fr;
+  }
 `;
 const DescContainer = styled.div`
   display: flex;
@@ -48,6 +52,10 @@ const Description = styled.div`
     font-size: 2rem;
     text-align: justify;
     line-height: 2.8rem;
+  }
+
+  @media (max-width: 550px) {
+    margin-top: 0;
   }
 `;
 

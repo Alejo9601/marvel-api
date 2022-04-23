@@ -9,6 +9,7 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: space-evenly;
   box-shadow: 0px 1px 10px 0px black;
+  flex-wrap: wrap;
 `;
 
 const Header = () => {

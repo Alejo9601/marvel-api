@@ -7,6 +7,10 @@ import { helpHttp } from "../helpers/helpHttp";
 const Container = styled.div`
   display: flex;
   align-items: center;
+
+  @media (max-width: 550px) {
+    padding-bottom: 20px;
+  }
 `;
 
 const Input = styled.input`
@@ -36,8 +40,9 @@ const SearchBar = () => {
       helpHttp()
         .get(url)
         .then((res) => {
-          event.target.value = "";
           setCharData(res);
+          event.target.value = "";
+          document.activeElement?.blur();
         });
     }
   };
