@@ -1,15 +1,15 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import styled from "styled-components";
 import HeroContext from "../context/HeroContext";
 import sURL from "../assets/json/settingsUrl.json";
 import { helpHttp } from "../helpers/helpHttp";
 
-const StyledContainer = styled.div`
+const Container = styled.div`
   display: flex;
   align-items: center;
 `;
 
-const StyledInput = styled.input`
+const Input = styled.input`
   background-color: white;
   height: 30px;
   border-radius: 5px;
@@ -37,6 +37,8 @@ const SearchBar = () => {
         .get(url)
         .then((res) => {
           if (res.data.results[0]) {
+            console.log("entre a cambiar el valor");
+            event.target.value = "";
             setHeroData(res);
           }
         });
@@ -44,14 +46,14 @@ const SearchBar = () => {
   };
 
   return (
-    <StyledContainer>
-      <StyledInput
+    <Container>
+      <Input
         type="text"
         name="search"
         placeholder="make a character search here..."
         onKeyDown={handleOnChange}
-      ></StyledInput>
-    </StyledContainer>
+      ></Input>
+    </Container>
   );
 };
 
