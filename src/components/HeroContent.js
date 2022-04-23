@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import HeroContext from "../context/HeroContext";
 import styled from "styled-components";
 import Loader from "./Loader";
+import Message from "./Message";
 
 const Section = styled.section`
   display: grid;
@@ -73,29 +74,35 @@ const HeroContent = () => {
     <Section>
       {heroData ? (
         <>
-          <ImgContainer>
-            <Img
-              src={
-                heroData
-                  ? `${heroData.data.results[0].thumbnail.path.replace(
-                      "http",
-                      "https"
-                    )}${imgSizes[2]}.jpg`
-                  : ""
-              }
-              alt="character"
-            />
-          </ImgContainer>
-          <DescContainer>
-            <Description>
-              <h1> Description </h1>
-              <p>
-                {heroData
-                  ? heroData.data.results[0].description
-                  : "No character description"}
-              </p>
-            </Description>
-          </DescContainer>
+          {heroData.data.results[0] ? (
+            <>
+              <ImgContainer>
+                <Img
+                  src={
+                    heroData
+                      ? `${heroData.data.results[0].thumbnail.path.replace(
+                          "http",
+                          "https"
+                        )}${imgSizes[2]}.jpg`
+                      : ""
+                  }
+                  alt="character"
+                />
+              </ImgContainer>
+              <DescContainer>
+                <Description>
+                  <h1> Description </h1>
+                  <p>
+                    {heroData
+                      ? heroData.data.results[0].description
+                      : "No character description"}
+                  </p>
+                </Description>
+              </DescContainer>
+            </>
+          ) : (
+            <Message msg="THERE'S NOT A CHARACTER RELATED TO THAT NAME" />
+          )}
         </>
       ) : (
         <Loader></Loader>

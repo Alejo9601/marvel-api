@@ -36,11 +36,8 @@ const SearchBar = () => {
       helpHttp()
         .get(url)
         .then((res) => {
-          if (res.data.results[0]) {
-            console.log("entre a cambiar el valor");
-            event.target.value = "";
-            setHeroData(res);
-          }
+          event.target.value = "";
+          setHeroData(res);
         });
     }
   };
