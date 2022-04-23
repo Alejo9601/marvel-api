@@ -9,7 +9,7 @@ const StyledUl = styled.ul`
 `;
 
 const StyledNav = styled.nav`
-  padding: 15px;
+  padding: 8px;
 `;
 
 const NavMenu = () => {

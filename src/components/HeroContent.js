@@ -101,7 +101,7 @@ const HeroContent = () => {
               </DescContainer>
             </>
           ) : (
-            <Message msg="THERE'S NOT A CHARACTER RELATED TO THAT NAME" />
+            <Message msg="THERE'S NOT A CHARACTER RELATED TO YOUR SEARCH" />
           )}
         </>
       ) : (

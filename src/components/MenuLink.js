@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const StyledLi = styled.li`
-  margin: 10px;
+  margin: 10px 25px 10px 25px;
+  padding: 5px 10px 5px 10px;
 
   &:hover {
     border-radius: 5px;
@@ -12,7 +13,7 @@ const StyledLi = styled.li`
     color: white;
     font-size: 1.8rem;
     text-decoration: none;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;                                                                                                                                                                                                                                                                                                                                                                                                                 : ;
 
     &:hover {
       color: black;
