@@ -20,10 +20,10 @@ const StyledLi = styled.li`
   }
 `;
 
-const MenuLink = ({ textValue }) => {
+const MenuLink = ({ textValue, refTo }) => {
   return (
     <StyledLi>
-      <a href="null">{textValue}</a>
+      <a href={refTo}>{textValue}</a>
     </StyledLi>
   );
 };

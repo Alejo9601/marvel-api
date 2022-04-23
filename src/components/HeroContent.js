@@ -30,7 +30,7 @@ const DescContainer = styled.div`
   align-items: center;
   margin: 20px;
   /* background-color: gray; */
-  padding-right: 25px;
+  padding-right: 10px;
 `;
 const Description = styled.div`
   margin-top: 25px;
