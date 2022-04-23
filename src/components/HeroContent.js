@@ -66,10 +66,6 @@ const HeroContent = () => {
   const { heroData } = useContext(HeroContext);
   const imgSizes = ["/detail", "/portrait_uncanny", ""];
 
-  useEffect(() => {
-    if (heroData) console.log(heroData.data);
-  }, [heroData]);
-
   return (
     <Section>
       {heroData ? (

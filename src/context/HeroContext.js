@@ -9,7 +9,6 @@ const HeroProvider = ({ children }) => {
 
   useEffect(() => {
     const url = `${sURL.baseUrl}hulk${sURL.ts}${sURL.publicKey}${sURL.md5Hash}`;
-    console.log(url);
     helpHttp()
       .get(url)
       .then((res) => setHeroData(res));
