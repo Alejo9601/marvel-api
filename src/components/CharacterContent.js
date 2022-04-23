@@ -3,26 +3,15 @@ import CharacterContext from "../context/CharacterContext";
 import styled from "styled-components";
 import Loader from "./Loader";
 import Message from "./Message";
+import CharacterImage from "./CharacterImage";
 
 const Section = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   /* background-color: black; */
   height: 100%;
   background: url(../assets/img/background.jpg);
-`;
-const ImgContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-  /* background-color: gray; */
-`;
-const Img = styled.img`
-  height: 90%;
-  width: 90%;
-  object-fit: cover;
-  box-shadow: -5px 5px 10px 0px black;
 `;
 const DescContainer = styled.div`
   display: flex;
@@ -64,7 +53,6 @@ const Description = styled.div`
 
 const HeroContent = () => {
   const { heroData } = useContext(CharacterContext);
-  const imgSizes = ["/detail", "/portrait_uncanny", ""];
 
   return (
     <Section>
@@ -72,19 +60,7 @@ const HeroContent = () => {
         <>
           {heroData.data.results[0] ? (
             <>
-              <ImgContainer>
-                <Img
-                  src={
-                    heroData
-                      ? `${heroData.data.results[0].thumbnail.path.replace(
-                          "http",
-                          "https"
-                        )}${imgSizes[2]}.jpg`
-                      : ""
-                  }
-                  alt="character"
-                />
-              </ImgContainer>
+              <CharacterImage heroData={heroData} />
               <DescContainer>
                 <Description>
                   <h1> Description </h1>

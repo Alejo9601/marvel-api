@@ -1,7 +1,7 @@
 import React from "react";
-import style from "styled-components";
+import styled from "styled-components";
 
-const Container = style.div`
+const Container = styled.div`
   position: absolute;
   top: 45%;
   left: 30%;
@@ -10,8 +10,8 @@ const Container = style.div`
   margin: 20px;
 
   p {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;   
-    font-weigth: 500;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
     font-size: 2rem;
     color: #fff;
   }
