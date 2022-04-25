@@ -4,6 +4,7 @@ import styled from "styled-components";
 import CharacterContext from "../context/CharacterContext";
 import sURL from "../assets/json/settingsUrl.json";
 import { helpHttp } from "../helpers/helpHttp";
+import Loader from "./Loader";
 
 const SectionContent = styled.section`
   display: flex;
@@ -11,6 +12,7 @@ const SectionContent = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   height: fit-content;
+  position: relative;
 `;
 const SectionTitle = styled.div`
   width: 100%;
@@ -117,29 +119,47 @@ const ComicSlider = () => {
           <SliderWrapper>
             <Slider ref={slider}>
               <ComicCard
-                imgSrc={`${charComics.data.results[0].thumbnail.path}/${imgSize}.jpg`}
+                imgSrc={`${charComics.data.results[0].thumbnail.path}/${imgSize}.jpg`.replace(
+                  "http",
+                  "https"
+                )}
               />
               <ComicCard
-                imgSrc={`${charComics.data.results[1].thumbnail.path}/${imgSize}.jpg`}
+                imgSrc={`${charComics.data.results[1].thumbnail.path}/${imgSize}.jpg`.replace(
+                  "http",
+                  "https"
+                )}
               />
               <ComicCard
-                imgSrc={`${charComics.data.results[2].thumbnail.path}/${imgSize}.jpg`}
+                imgSrc={`${charComics.data.results[2].thumbnail.path}/${imgSize}.jpg`.replace(
+                  "http",
+                  "https"
+                )}
               />
               <ComicCard
-                imgSrc={`${charComics.data.results[3].thumbnail.path}/${imgSize}.jpg`}
+                imgSrc={`${charComics.data.results[3].thumbnail.path}/${imgSize}.jpg`.replace(
+                  "http",
+                  "https"
+                )}
               />
               <ComicCard
-                imgSrc={`${charComics.data.results[4].thumbnail.path}/${imgSize}.jpg`}
+                imgSrc={`${charComics.data.results[4].thumbnail.path}/${imgSize}.jpg`.replace(
+                  "http",
+                  "https"
+                )}
               />
               <ComicCard
-                imgSrc={`${charComics.data.results[5].thumbnail.path}/${imgSize}.jpg`}
+                imgSrc={`${charComics.data.results[5].thumbnail.path}/${imgSize}.jpg`.replace(
+                  "http",
+                  "https"
+                )}
               />
             </Slider>
           </SliderWrapper>
           <ButtonSlider onClick={() => handleSlide(true)}>{`>`}</ButtonSlider>
         </>
       ) : (
-        "...cargando comics"
+        <Loader></Loader>
       )}
     </SectionContent>
   );
