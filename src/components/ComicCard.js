@@ -1,35 +1,31 @@
-// import cerroCruz from "../assets/img/cerro.jpg";
-// import RefButton from "./RefButton";
 import styled from "styled-components";
 
 const Card = styled.div`
   flex-direction: column;
-  height: 250px;
-  min-width: 150px;
+  height: 270px;
+  min-width: 180px;
   max-width: 150px;
-  background-color: black;
   box-shadow: -2px 5px 10px -5px black;
-  border-radius: 10px;
   margin: 20px;
   overflow: hidden;
 `;
 const ImageContainer = styled.picture`
-  height: 50%;
+  height: 100%;
   width: 100%;
   overflow: hidden;
 `;
-const CardImage = styled.div`
+const CardImage = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
 `;
 
-const ComicCard = () => {
+const ComicCard = ({ imgSrc }) => {
   return (
     <Card>
       <ImageContainer>
-        {/* <source srcSet={cerroCruz} /> */}
-        <CardImage alt="Noticia" />
+        <source srcSet={imgSrc} />
+        <CardImage src={imgSrc} alt="comic" />
       </ImageContainer>
     </Card>
   );

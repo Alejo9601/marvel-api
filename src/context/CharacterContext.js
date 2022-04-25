@@ -8,7 +8,7 @@ const HeroProvider = ({ children }) => {
   const [charData, setCharData] = useState();
 
   useEffect(() => {
-    const url = `${sURL.baseUrl}hulk${sURL.ts}${sURL.publicKey}${sURL.md5Hash}`;
+    const url = `${sURL.baseUrl}${sURL.charRequest}hulk&${sURL.ts}&${sURL.publicKey}&${sURL.md5Hash}`;
     helpHttp()
       .get(url)
       .then((res) => setCharData(res));

@@ -1,6 +1,7 @@
 {
-    "publicKey": "&apikey=e44e037f0d22efbd00cfba40ebaa087c",
-    "md5Hash": "&hash=03354bd7271cb5b03618c27e91b3da61",
-    "baseUrl": "https://gateway.marvel.com/v1/public/characters?name=",
-    "ts": "&ts=1000"
+    "publicKey": "apikey=e44e037f0d22efbd00cfba40ebaa087c",
+    "md5Hash": "hash=03354bd7271cb5b03618c27e91b3da61",
+    "ts": "ts=1000",
+    "baseUrl": "https://gateway.marvel.com/v1/public/characters",
+    "charRequest": "?name="
 }

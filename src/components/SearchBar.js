@@ -36,7 +36,7 @@ const SearchBar = () => {
     let tecla = document.all ? event.keyCode : event.which;
     if (tecla === 13 && event.target.value !== "") {
       const character = event.target.value;
-      const url = `${sURL.baseUrl}${character}${sURL.ts}${sURL.publicKey}${sURL.md5Hash}`;
+      const url = `${sURL.baseUrl}${sURL.charRequest}${character}&${sURL.ts}&${sURL.publicKey}&${sURL.md5Hash}`;
       helpHttp()
         .get(url)
         .then((res) => {
