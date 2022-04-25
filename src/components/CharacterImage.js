@@ -5,7 +5,6 @@ const ImgContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 20px;
   /* background-color: gray; */
 `;
 const CharName = styled.h1`
