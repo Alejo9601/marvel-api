@@ -9,20 +9,22 @@ const SectionContent = styled.section`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
   height: fit-content;
 `;
 const SectionTitle = styled.div`
   width: 100%;
-  text-align: center;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  font-size: 2rem;
-  margin-bottom: 20px;
+
+  h1 {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 3rem;
+    font-weight: 500;
+    padding: 5px;
+    margin: 10px;
+  }
 `;
 const ButtonSlider = styled.div`
-  height: 100%;
   display: inherit;
   align-items: center;
   color: var(--gray);
@@ -38,9 +40,12 @@ const SliderWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   max-width: 625px;
+  height: fit-content;
   overflow: hidden;
   border-radius: 15px;
   background-color: var(--light-gray);
+  padding: 5px;
+  margin: 10px;
 `;
 const Slider = styled.div`
   display: inherit;
@@ -106,7 +111,7 @@ const ComicSlider = () => {
       {Object.keys(charComics).length !== 0 ? (
         <>
           <SectionTitle>
-            <h1>Latest News</h1>
+            <h1>Comics ...</h1>
           </SectionTitle>
           <ButtonSlider onClick={() => handleSlide(false)}>{`<`}</ButtonSlider>
           <SliderWrapper>
