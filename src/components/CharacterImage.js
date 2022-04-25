@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const ImgContainer = styled.div`
-  grid-area: span 2;
   display: flex;
   justify-content: center;
   align-items: center;
