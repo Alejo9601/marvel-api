@@ -5,7 +5,6 @@ const DescContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin: 20px;
   /* background-color: gray; */
   padding-right: 10px;
 `;
@@ -41,15 +40,26 @@ const Description = styled.div`
   }
 `;
 
+const NoDescription = styled.h3`
+  font-size: 2.5rem;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #ff4040;
+`;
+
 const CharacterHistory = ({ charData }) => {
+  const data = charData.data.results[0].description;
+
   return (
     <DescContainer>
       <Description>
         <h1> Description </h1>
         <p>
-          {charData
-            ? charData.data.results[0].description
-            : "No character description"}
+          {data !== "" ? (
+            data
+          ) : (
+            <NoDescription>This character has no description</NoDescription>
+          )}
         </p>
       </Description>
     </DescContainer>
