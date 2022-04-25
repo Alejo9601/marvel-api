@@ -41,10 +41,12 @@ const Description = styled.div`
 `;
 
 const NoDescription = styled.h3`
-  font-size: 2.5rem;
+  font-size: 2rem;
   padding: 20px;
   margin-bottom: 20px;
   background-color: #ff4040;
+  text-align: center;
+  border-radius: 10px;
 `;
 
 const CharacterHistory = ({ charData }) => {
@@ -53,12 +55,15 @@ const CharacterHistory = ({ charData }) => {
   return (
     <DescContainer>
       <Description>
-        <h1> Description </h1>
+        <h1>Brief History</h1>
         <p>
           {data !== "" ? (
             data
           ) : (
-            <NoDescription>This character has no description</NoDescription>
+            <NoDescription>
+              Marvel has no history added for this character <br></br>... SORRY
+              !
+            </NoDescription>
           )}
         </p>
       </Description>

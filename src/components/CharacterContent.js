@@ -27,7 +27,7 @@ const HeroContent = () => {
         <>
           {charData.data.results[0] ? (
             <>
-              <CharacterImage heroData={charData} />
+              <CharacterImage charData={charData} />
               <CharacterInfo />
             </>
           ) : (

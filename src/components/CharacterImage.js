@@ -13,15 +13,15 @@ const Img = styled.img`
   object-fit: cover;
   box-shadow: -5px 5px 10px 0px black;
 `;
-const CharacterImage = ({ heroData }) => {
+const CharacterImage = ({ charData }) => {
   const imgSizes = ["/detail", "/portrait_uncanny", ""];
 
   return (
     <ImgContainer>
       <Img
         src={
-          heroData
-            ? `${heroData.data.results[0].thumbnail.path.replace(
+          charData
+            ? `${charData.data.results[0].thumbnail.path.replace(
                 "http",
                 "https"
               )}${imgSizes[2]}.jpg`
