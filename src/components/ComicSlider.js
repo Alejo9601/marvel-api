@@ -4,13 +4,12 @@ import styled from "styled-components";
 import CharacterContext from "../context/CharacterContext";
 import sURL from "../assets/json/settingsUrl.json";
 import { helpHttp } from "../helpers/helpHttp";
-import Loader from "./Loader";
 
 const SectionContent = styled.section`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   height: fit-content;
 `;
@@ -38,7 +37,7 @@ const SliderWrapper = styled.div`
   display: inherit;
   justify-content: flex-start;
   align-items: center;
-  max-width: 570px;
+  max-width: 625px;
   overflow: hidden;
   border-radius: 15px;
   background-color: var(--light-gray);
@@ -56,6 +55,8 @@ const Slider = styled.div`
 const ComicSlider = () => {
   const slider = useRef();
   const currPosition = useRef();
+  const comicsCount = useRef();
+  const imgSize = "portrait_fantastic";
   const { charData } = useContext(CharacterContext);
   const [charComics, setCharComics] = useState({});
 
@@ -74,6 +75,7 @@ const ComicSlider = () => {
       .get(url)
       .then((res) => {
         setCharComics(res);
+        comicsCount.current = charComics.data.count;
       });
   };
 
@@ -92,15 +94,10 @@ const ComicSlider = () => {
   };
 
   const handleSlide = (next) => {
-    const cards = 6;
-    const cardWidth = 150;
-    const cardsDisplayed = 2;
-    const sliderStep = cardWidth * cardsDisplayed; //step of 1020 or 680
-
-    const sliderLimit = next ? -sliderStep * (cards / cardsDisplayed - 1) : 0;
-
-    if (currPosition.current !== sliderLimit) {
-      next ? slideNext(sliderStep) : slidePrev(sliderStep);
+    const wrapperWidth = 625;
+    const lowerLimit = 0;
+    if (currPosition.current !== lowerLimit) {
+      next ? slideNext(wrapperWidth) : slidePrev(wrapperWidth);
     }
   };
 
@@ -115,22 +112,22 @@ const ComicSlider = () => {
           <SliderWrapper>
             <Slider ref={slider}>
               <ComicCard
-                imgSrc={`${charComics.data.results[0].thumbnail.path}.jpg`}
+                imgSrc={`${charComics.data.results[0].thumbnail.path}/${imgSize}.jpg`}
               />
               <ComicCard
-                imgSrc={`${charComics.data.results[1].thumbnail.path}.jpg`}
+                imgSrc={`${charComics.data.results[1].thumbnail.path}/${imgSize}.jpg`}
               />
               <ComicCard
-                imgSrc={`${charComics.data.results[2].thumbnail.path}.jpg`}
+                imgSrc={`${charComics.data.results[2].thumbnail.path}/${imgSize}.jpg`}
               />
               <ComicCard
-                imgSrc={`${charComics.data.results[3].thumbnail.path}.jpg`}
+                imgSrc={`${charComics.data.results[3].thumbnail.path}/${imgSize}.jpg`}
               />
               <ComicCard
-                imgSrc={`${charComics.data.results[4].thumbnail.path}.jpg`}
+                imgSrc={`${charComics.data.results[4].thumbnail.path}/${imgSize}.jpg`}
               />
               <ComicCard
-                imgSrc={`${charComics.data.results[5].thumbnail.path}.jpg`}
+                imgSrc={`${charComics.data.results[5].thumbnail.path}/${imgSize}.jpg`}
               />
             </Slider>
           </SliderWrapper>

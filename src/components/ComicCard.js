@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 const Card = styled.div`
   flex-direction: column;
-  height: 270px;
-  min-width: 180px;
-  max-width: 150px;
+  height: 252px;
+  min-width: 168px;
+  max-width: 168px;
   box-shadow: -2px 5px 10px -5px black;
   margin: 20px;
   overflow: hidden;
