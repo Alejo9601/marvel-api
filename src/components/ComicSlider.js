@@ -119,7 +119,7 @@ const ComicSlider = () => {
       {Object.keys(charComics).length !== 0 ? (
         <>
           <SectionTitle>
-            <h1>Comics ...</h1>
+            <h1>Comics for this character</h1>
           </SectionTitle>
           <ButtonSlider onClick={() => handleSlide(false)}>{`<`}</ButtonSlider>
           <SliderWrapper>
