@@ -58,18 +58,21 @@ const Slider = styled.div`
   padding: 0;
   background-color: white;
 `;
+const Page = styled.p`
+  font-size: 2rem;
+  width: 100%;
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+`;
 
 const ComicSlider = () => {
   const slider = useRef();
-  const currPosition = useRef();
-  const comicsCount = useRef();
+  const currPosition = useRef(0);
+  const [visibleCount, setVisibleCount] = useState(3);
   const imgSize = "portrait_fantastic";
   const { charData } = useContext(CharacterContext);
   const [charComics, setCharComics] = useState({});
-
-  useEffect(() => {
-    currPosition.current = 0;
-  }, []);
 
   useEffect(() => {
     getComics();
@@ -82,7 +85,6 @@ const ComicSlider = () => {
       .get(url)
       .then((res) => {
         setCharComics(res);
-        comicsCount.current = charComics.data.count;
       });
   };
 
@@ -102,9 +104,13 @@ const ComicSlider = () => {
 
   const handleSlide = (next) => {
     const wrapperWidth = 625;
-    const lowerLimit = 0;
-    if (currPosition.current !== lowerLimit) {
-      next ? slideNext(wrapperWidth) : slidePrev(wrapperWidth);
+    const totalComics = charComics.data.total;
+    if (next && currPosition.current !== -totalComics) {
+      slideNext(wrapperWidth);
+      setVisibleCount(visibleCount + 3);
+    } else if (currPosition.current < 0) {
+      slidePrev(wrapperWidth);
+      setVisibleCount(visibleCount - 3);
     }
   };
 
@@ -157,6 +163,9 @@ const ComicSlider = () => {
             </Slider>
           </SliderWrapper>
           <ButtonSlider onClick={() => handleSlide(true)}>{`>`}</ButtonSlider>
+          <Page>
+            {visibleCount} of {charComics.data.total}
+          </Page>
         </>
       ) : (
         <Loader></Loader>
