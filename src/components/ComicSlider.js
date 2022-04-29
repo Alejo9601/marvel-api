@@ -81,7 +81,8 @@ const ComicSlider = () => {
 
   const getComics = (next) => {
     const charId = charData.data.results[0].id;
-    const url = `${sURL.baseUrl}/${charId}/comics?${sURL.ts}&${sURL.publicKey}&${sURL.md5Hash}`;
+    const limit = 18;
+    const url = `${sURL.baseUrl}/${charId}/comics?limit=${limit}&${sURL.ts}&${sURL.publicKey}&${sURL.md5Hash}`;
     helpHttp()
       .get(url)
       .then((res) => {
