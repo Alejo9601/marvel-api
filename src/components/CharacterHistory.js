@@ -61,8 +61,8 @@ const CharacterHistory = ({ charData }) => {
             data
           ) : (
             <NoDescription>
-              Marvel has no history added for this character <br></br>... SORRY
-              !
+              SORRY ... Marvel has no history provided <br></br> for this
+              character!
             </NoDescription>
           )}
         </p>
