@@ -8,6 +8,7 @@ const Card = styled.div`
   box-shadow: -2px 5px 10px -5px black;
   margin: 20px;
   overflow: hidden;
+  /* background-color: black; */
 `;
 const ImageContainer = styled.picture`
   height: 100%;

@@ -67,49 +67,48 @@ const Page = styled.p`
 `;
 
 const ComicSlider = () => {
-  const slider = useRef();
-  const currPosition = useRef(0);
-  const [visibleCount, setVisibleCount] = useState(3);
-  const imgSize = "portrait_fantastic";
   const { charData } = useContext(CharacterContext);
   const [charComics, setCharComics] = useState({});
+  const [visibleCount, setVisibleCount] = useState(3);
+  const slider = useRef();
+  const currPosition = useRef(0);
+  const offset = useRef(0);
+  const imgSize = "portrait_fantastic";
 
   useEffect(() => {
-    getComics();
+    getComics(true, 0);
   }, [charData]);
 
-  const getComics = () => {
+  const getComics = (next) => {
     const charId = charData.data.results[0].id;
     const url = `${sURL.baseUrl}/${charId}/comics?${sURL.ts}&${sURL.publicKey}&${sURL.md5Hash}`;
     helpHttp()
       .get(url)
       .then((res) => {
         setCharComics(res);
+        next
+          ? (offset.current = offset.current + 20)
+          : (offset.current = offset.current + 20);
       });
   };
 
-  const slideNext = (step) => {
+  const slide = (step, next) => {
     slider.current.style.transform = `translate(${
-      currPosition.current - step
+      next ? currPosition.current - step : currPosition.current + step
     }px)`;
-    currPosition.current = currPosition.current - step;
-  };
-
-  const slidePrev = (step) => {
-    slider.current.style.transform = `translate(${
-      currPosition.current + step
-    }px)`;
-    currPosition.current = currPosition.current + step;
+    currPosition.current = next
+      ? currPosition.current - step
+      : currPosition.current + step;
   };
 
   const handleSlide = (next) => {
     const wrapperWidth = 625;
     const totalComics = charComics.data.total;
     if (next && currPosition.current !== -totalComics) {
-      slideNext(wrapperWidth);
+      slide(wrapperWidth, true);
       setVisibleCount(visibleCount + 3);
     } else if (currPosition.current < 0) {
-      slidePrev(wrapperWidth);
+      slide(wrapperWidth, false);
       setVisibleCount(visibleCount - 3);
     }
   };
@@ -119,53 +118,24 @@ const ComicSlider = () => {
       {Object.keys(charComics).length !== 0 ? (
         <>
           <SectionTitle>
-            <h1>Comics for this character</h1>
+            <h1>Comics for this character * {charComics.data.total} * </h1>
           </SectionTitle>
           <ButtonSlider onClick={() => handleSlide(false)}>{`<`}</ButtonSlider>
           <SliderWrapper>
             <Slider ref={slider}>
-              <ComicCard
-                imgSrc={`${charComics.data.results[0].thumbnail.path}/${imgSize}.jpg`.replace(
-                  "http",
-                  "https"
-                )}
-              />
-              <ComicCard
-                imgSrc={`${charComics.data.results[1].thumbnail.path}/${imgSize}.jpg`.replace(
-                  "http",
-                  "https"
-                )}
-              />
-              <ComicCard
-                imgSrc={`${charComics.data.results[2].thumbnail.path}/${imgSize}.jpg`.replace(
-                  "http",
-                  "https"
-                )}
-              />
-              <ComicCard
-                imgSrc={`${charComics.data.results[3].thumbnail.path}/${imgSize}.jpg`.replace(
-                  "http",
-                  "https"
-                )}
-              />
-              <ComicCard
-                imgSrc={`${charComics.data.results[4].thumbnail.path}/${imgSize}.jpg`.replace(
-                  "http",
-                  "https"
-                )}
-              />
-              <ComicCard
-                imgSrc={`${charComics.data.results[5].thumbnail.path}/${imgSize}.jpg`.replace(
-                  "http",
-                  "https"
-                )}
-              />
+              {charComics.data.results.map((comic) => (
+                <ComicCard
+                  key={comic.id}
+                  imgSrc={`${comic.thumbnail.path}/${imgSize}.jpg`.replace(
+                    "http",
+                    "https"
+                  )}
+                />
+              ))}
             </Slider>
           </SliderWrapper>
           <ButtonSlider onClick={() => handleSlide(true)}>{`>`}</ButtonSlider>
-          <Page>
-            {visibleCount} of {charComics.data.total}
-          </Page>
+          <Page>{visibleCount} of first 20</Page>
         </>
       ) : (
         <Loader></Loader>
