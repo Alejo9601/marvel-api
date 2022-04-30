@@ -41,13 +41,15 @@ const SliderWrapper = styled.div`
   display: inherit;
   justify-content: flex-start;
   align-items: center;
-  max-width: 625px;
+  max-width: 624px;
   height: fit-content;
   overflow: hidden;
   border-radius: 15px;
   background-color: var(--light-gray);
-  padding: 5px;
-  margin: 10px;
+
+  @media (max-width: 1400px) {
+    max-width: 416px;
+  }
 `;
 const Slider = styled.div`
   display: inherit;
@@ -56,7 +58,7 @@ const Slider = styled.div`
   transition: transform 1s ease;
   margin: 0;
   padding: 0;
-  background-color: white;
+  background-color: beige;
 `;
 const Page = styled.p`
   font-size: 2rem;
@@ -71,6 +73,7 @@ const ComicSlider = () => {
   const [charComics, setCharComics] = useState({});
   const [visibleCount, setVisibleCount] = useState(3);
   const slider = useRef();
+  const sliderWrapper = useRef();
   const currPosition = useRef(0);
   const offset = useRef(0);
   const imgSize = "portrait_fantastic";
@@ -103,7 +106,7 @@ const ComicSlider = () => {
   };
 
   const handleSlide = (next) => {
-    const wrapperWidth = 625;
+    const wrapperWidth = sliderWrapper.current.clientWidth;
     const totalComics = charComics.data.total;
     if (next && currPosition.current !== -totalComics) {
       slide(wrapperWidth, true);
@@ -122,7 +125,7 @@ const ComicSlider = () => {
             <h1>Comics for this character * {charComics.data.total} * </h1>
           </SectionTitle>
           <ButtonSlider onClick={() => handleSlide(false)}>{`<`}</ButtonSlider>
-          <SliderWrapper>
+          <SliderWrapper ref={sliderWrapper}>
             <Slider ref={slider}>
               {charComics.data.results.map((comic) => (
                 <ComicCard

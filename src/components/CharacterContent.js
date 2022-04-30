@@ -12,6 +12,7 @@ const GridContainer = styled.section`
   grid-template-columns: 1fr 1.3fr;
   margin-left: 0px;
   margin-right: 40px;
+
   @media (max-width: 550px) {
     grid-template-columns: 1fr;
   }
