@@ -9,7 +9,7 @@ const SectionContent = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: aqua;
+  /* background-color: aqua; */
 `;
 
 const CharacterInfo = () => {
