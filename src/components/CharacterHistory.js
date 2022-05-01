@@ -25,6 +25,7 @@ const Description = styled.div`
 
   h1 {
     font-size: 3rem;
+    font-weight: bold;
     width: inherit;
     text-align: center;
   }
@@ -35,8 +36,19 @@ const Description = styled.div`
     line-height: 2.8rem;
   }
 
+  @media (max-width: 1366px) {
+    margin-left: 80px;
+    margin-right: 80px;
+  }
+
   @media (max-width: 550px) {
-    margin-top: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    p {
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
   }
 `;
 

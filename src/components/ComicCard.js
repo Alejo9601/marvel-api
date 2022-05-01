@@ -9,6 +9,10 @@ const Card = styled.div`
   margin: 20px;
   overflow: hidden;
   /* background-color: black; */
+  /* 
+  @media (max-width: 550px) {
+    min-width: ;
+  } */
 `;
 const ImageContainer = styled.picture`
   height: 100%;

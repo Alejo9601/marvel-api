@@ -10,10 +10,9 @@ const GridContainer = styled.section`
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1.3fr;
-  margin-left: 0px;
-  margin-right: 40px;
+  flex-grow: 1;
 
-  @media (max-width: 550px) {
+  @media (max-width: 1366px) {
     grid-template-columns: 1fr;
   }
 `;

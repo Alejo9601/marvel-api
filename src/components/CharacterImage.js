@@ -5,7 +5,12 @@ const ImgContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background-color: gray; */
+  background-color: gray;
+
+  @media (max-width: 1366px) {
+    margin: 25px 0px 25px 0px;
+    padding: 25px 0px 25px 0px;
+  }
 `;
 const CharName = styled.h1`
   font-size: 4rem;
@@ -13,10 +18,30 @@ const CharName = styled.h1`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 `;
 const Img = styled.img`
-  height: 80%;
-  width: 80%;
+  height: 650px;
+  width: auto;
   object-fit: cover;
   box-shadow: -5px 5px 10px 0px black;
+
+  @media (max-width: 1750px) {
+    height: 550px;
+  }
+
+  @media (max-width: 1366px) {
+    height: 800px;
+  }
+
+  @media (max-width: 1152px) {
+    height: 650px;
+  }
+
+  @media (max-width: 832px) {
+    height: 500px;
+  }
+
+  @media (max-width: 550px) {
+    height: 350px;
+  }
 `;
 
 const CharacterImage = ({ charData }) => {

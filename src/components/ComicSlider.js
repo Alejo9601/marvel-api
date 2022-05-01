@@ -24,6 +24,10 @@ const SectionTitle = styled.div`
     font-weight: 500;
     padding: 5px;
     margin: 10px;
+
+    @media (max-width: 1366px) {
+      margin-top: 80px;
+    }
   }
 `;
 const ButtonSlider = styled.div`
@@ -47,8 +51,12 @@ const SliderWrapper = styled.div`
   border-radius: 15px;
   background-color: var(--light-gray);
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1366px) {
     max-width: 416px;
+  }
+
+  @media (max-width: 550px) {
+    max-width: 208px;
   }
 `;
 const Slider = styled.div`
