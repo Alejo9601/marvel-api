@@ -21,7 +21,6 @@ const SectionTitle = styled.div`
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 3rem;
-    font-weight: 500;
     padding: 5px;
     margin: 10px;
 
@@ -34,12 +33,10 @@ const ButtonSlider = styled.div`
   display: inherit;
   align-items: center;
   color: var(--gray);
-  font-size: 6rem;
+  font-size: 4rem;
   cursor: pointer;
   padding-right: 10px;
   padding-left: 10px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
 `;
 const SliderWrapper = styled.div`
   display: inherit;
@@ -66,14 +63,12 @@ const Slider = styled.div`
   transition: transform 1s ease;
   margin: 0;
   padding: 0;
-  background-color: beige;
+  /* background-color: beige; */
 `;
 const Page = styled.p`
   font-size: 2rem;
   width: 100%;
   text-align: center;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
 `;
 
 const ComicSlider = () => {

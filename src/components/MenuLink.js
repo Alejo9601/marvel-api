@@ -8,7 +8,6 @@ const StyledLi = styled.li`
     color: white;
     font-size: 1.8rem;
     text-decoration: none;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
 
   &:hover {

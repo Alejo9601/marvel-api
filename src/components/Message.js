@@ -10,7 +10,6 @@ const Container = styled.div`
   margin: 20px;
 
   p {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 500;
     font-size: 2rem;
     color: #fff;

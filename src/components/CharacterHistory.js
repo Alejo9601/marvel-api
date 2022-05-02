@@ -17,7 +17,6 @@ const Description = styled.div`
   h1,
   p {
     color: black;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: lighter;
     padding: 5px;
     margin: 10px;
@@ -34,6 +33,7 @@ const Description = styled.div`
     font-size: 2rem;
     text-align: justify;
     line-height: 2.8rem;
+    margin-right: 35px;
   }
 
   @media (max-width: 1366px) {

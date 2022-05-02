@@ -15,13 +15,13 @@ const ImgContainer = styled.div`
 const CharName = styled.h1`
   font-size: 4rem;
   padding-bottom: 20px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 `;
 const Img = styled.img`
   height: 650px;
   width: auto;
   object-fit: cover;
-  box-shadow: -5px 5px 10px 0px black;
+  border-radius: 5px;
+  box-shadow: -2px 2px 5px 0px black;
 
   @media (max-width: 1750px) {
     height: 550px;
