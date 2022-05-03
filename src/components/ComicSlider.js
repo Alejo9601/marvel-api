@@ -1,11 +1,9 @@
-import { useRef, useEffect, useContext, useState } from "react";
 import ComicCard from "./ComicCard";
 import styled from "styled-components";
 import CharacterContext from "../context/CharacterContext";
-import { helpHttp } from "../helpers/helpHttp";
 import Loader from "./Loader";
-import { comicsUrlFor } from "../helpers/urlsGenerator";
 import useGetComics from "../hooks/useGetComics";
+import { useContext, useRef, useState } from "react";
 
 const SectionContent = styled.section`
   display: flex;
@@ -92,8 +90,8 @@ const ComicSlider = () => {
 
   const handleSlide = (next) => {
     const wrapperWidth = sliderWrapper.current.clientWidth;
-    const totalComics = charComics.data.total;
-    if (next && sliderPosition.current !== -totalComics) {
+    /*Implement here getting comics when reaching sliding*/
+    if (next) {
       slide(wrapperWidth, true);
       setVisibleCount(visibleCount + 3);
     } else if (sliderPosition.current < 0) {

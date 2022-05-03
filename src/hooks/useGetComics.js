@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { helpHttp } from "../helpers/helpHttp";
 import { comicsUrlFor } from "../helpers/urlsGenerator";
-import sURL from "../assets/json/settingsUrl.json";
 
 const useGetComics = (charId) => {
   const [charComics, setCharComics] = useState({});
@@ -14,8 +13,8 @@ const useGetComics = (charId) => {
       .then((res) => {
         setCharComics(res);
         next
-          ? (offset.current = offset.current + 18)
-          : (offset.current = offset.current - 18);
+          ? (offset.current = offset.current + limit)
+          : (offset.current = offset.current - limit);
       });
   };
 
