@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { helpHttp } from "../helpers/helpHttp";
-import sURL from "../assets/json/settingsUrl.json";
+import { characterUrlFor } from "../helpers/urlsGenerator";
 
 const HeroContext = createContext();
 
@@ -8,9 +8,8 @@ const HeroProvider = ({ children }) => {
   const [charData, setCharData] = useState();
 
   useEffect(() => {
-    const url = `${sURL.baseUrl}${sURL.charRequest}hulk&${sURL.ts}&${sURL.publicKey}&${sURL.md5Hash}`;
     helpHttp()
-      .get(url)
+      .get(characterUrlFor("hulk"))
       .then((res) => setCharData(res));
   }, []);
 

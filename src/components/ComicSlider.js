@@ -72,7 +72,7 @@ const Page = styled.p`
 
 const ComicSlider = () => {
   const { charData } = useContext(CharacterContext);
-  const charComics = useGetComics(charData.data.results[0].id);
+  const [comics, totalComics] = useGetComics(charData.data.results[0].id);
   const [visibleCount, setVisibleCount] = useState(3);
   const sliderWrapper = useRef();
   const slider = useRef();
@@ -102,15 +102,15 @@ const ComicSlider = () => {
 
   return (
     <SectionContent>
-      {Object.keys(charComics).length !== 0 ? (
+      {comics.length !== 0 ? (
         <>
           <SectionTitle>
-            <h1>Comics for this character * {charComics.data.total} * </h1>
+            <h1>Comics for this character * {totalComics} * </h1>
           </SectionTitle>
           <ButtonSlider onClick={() => handleSlide(false)}>{`<`}</ButtonSlider>
           <SliderWrapper ref={sliderWrapper}>
             <Slider ref={slider}>
-              {charComics.data.results.map((comic) => (
+              {comics.map((comic) => (
                 <ComicCard
                   key={comic.id}
                   imgSrc={`${comic.thumbnail.path}/${imgSize}.jpg`.replace(

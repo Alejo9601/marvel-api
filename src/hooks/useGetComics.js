@@ -22,7 +22,9 @@ const useGetComics = (charId) => {
     getComics(true);
   }, [charId]);
 
-  return charComics;
+  return Object.keys(charComics).length !== 0
+    ? [charComics.data.results, charComics.data.total]
+    : [[], 0];
 };
 
 export default useGetComics;
