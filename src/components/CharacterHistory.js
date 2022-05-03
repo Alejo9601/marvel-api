@@ -67,7 +67,6 @@ const Description = styled.div`
 const NoDescription = styled.h3`
   font-size: 2rem;
   padding: 20px;
-  margin-bottom: 20px;
   background-color: #ff4040;
   text-align: center;
   border-radius: 10px;

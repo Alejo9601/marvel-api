@@ -16,16 +16,22 @@ const Container = styled.div`
 const Input = styled.input`
   background-color: white;
   height: 30px;
-  border-radius: 3px;
+  border-radius: 4px;
   border: 0px;
   width: 400px;
   text-align: center;
   font-size: 1.6rem;
   outline: none;
+  /* box-shadow: 0px 0px 1.5px 0px inset black; */
 
   ::placeholder {
     color: lightgray;
     font-size: 1.5rem;
+  }
+
+  @media (max-width: 550px) {
+    width: 360px;
+    height: 50px;
   }
 `;
 

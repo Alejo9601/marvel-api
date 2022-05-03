@@ -7,7 +7,6 @@ const Container = styled.div`
   left: 30%;
   background-color: #ff4040;
   padding: 20px;
-  margin: 20px;
 
   p {
     font-weight: 500;
