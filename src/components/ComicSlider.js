@@ -68,6 +68,10 @@ const Page = styled.p`
   font-size: 2rem;
   width: 100%;
   text-align: center;
+
+  @media (max-width: 1366px) {
+    margin-bottom: 100px;
+  }
 `;
 
 const ComicSlider = () => {

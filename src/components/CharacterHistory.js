@@ -6,7 +6,6 @@ const DescContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   /* background-color: gray; */
-  padding-right: 10px;
 `;
 const Description = styled.div`
   display: flex;
@@ -25,7 +24,6 @@ const Description = styled.div`
   h1 {
     font-size: 3rem;
     font-weight: bold;
-    width: inherit;
     text-align: center;
   }
 
@@ -33,19 +31,33 @@ const Description = styled.div`
     font-size: 2rem;
     text-align: justify;
     line-height: 2.8rem;
-    margin-right: 35px;
+    width: 725px;
   }
 
   @media (max-width: 1366px) {
-    margin-left: 80px;
-    margin-right: 80px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+    p {
+      width: 770px;
+    }
+  }
+
+  @media (max-width: 1152px) {
+    p {
+      width: 620px;
+    }
+  }
+
+  @media (max-width: 882px) {
+    p {
+      width: 480px;
+    }
   }
 
   @media (max-width: 550px) {
-    margin-left: 20px;
-    margin-right: 20px;
-
     p {
+      width: 350px;
       font-size: 2.5rem;
       font-weight: 300;
     }

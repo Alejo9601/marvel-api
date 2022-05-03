@@ -5,6 +5,7 @@ const ImgContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
   /* background-color: gray; */
 
   @media (max-width: 1366px) {
