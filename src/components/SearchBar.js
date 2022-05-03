@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import CharacterContent from "../context/CharacterContext";
-import sURL from "../assets/json/settingsUrl.json";
 import { helpHttp } from "../helpers/helpHttp";
+import { characterUrlFor } from "../helpers/urlsGenerator";
 
 const Container = styled.div`
   display: flex;
@@ -38,13 +38,13 @@ const Input = styled.input`
 const SearchBar = () => {
   const { setCharData } = useContext(CharacterContent);
 
-  const handleOnChange = (event) => {
-    let tecla = document.all ? event.keyCode : event.which;
-    if (tecla === 13 && event.target.value !== "") {
-      const character = event.target.value;
-      const url = `${sURL.baseUrl}${sURL.charRequest}${character}&${sURL.ts}&${sURL.publicKey}&${sURL.md5Hash}`;
+  const handleKeyDown = (event) => {
+    let keyPressed = document.all ? event.keyCode : event.which;
+    let enter = 13;
+    if (keyPressed === enter && event.target.value !== "") {
+      const charName = event.target.value;
       helpHttp()
-        .get(url)
+        .get(characterUrlFor(charName))
         .then((res) => {
           setCharData(res);
           event.target.value = "";
@@ -59,7 +59,7 @@ const SearchBar = () => {
         type="text"
         name="search"
         placeholder="make a character search here..."
-        onKeyDown={handleOnChange}
+        onKeyDown={handleKeyDown}
       ></Input>
     </Container>
   );
