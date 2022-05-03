@@ -2,9 +2,10 @@ import { useRef, useEffect, useContext, useState } from "react";
 import ComicCard from "./ComicCard";
 import styled from "styled-components";
 import CharacterContext from "../context/CharacterContext";
-import sURL from "../assets/json/settingsUrl.json";
 import { helpHttp } from "../helpers/helpHttp";
 import Loader from "./Loader";
+import { comicsUrlFor } from "../helpers/urlsGenerator";
+import useGetComics from "../hooks/useGetComics";
 
 const SectionContent = styled.section`
   display: flex;
@@ -73,48 +74,29 @@ const Page = styled.p`
 
 const ComicSlider = () => {
   const { charData } = useContext(CharacterContext);
-  const [charComics, setCharComics] = useState({});
+  const charComics = useGetComics(charData.data.results[0].id);
   const [visibleCount, setVisibleCount] = useState(3);
-  const slider = useRef();
   const sliderWrapper = useRef();
-  const currPosition = useRef(0);
-  const offset = useRef(0);
+  const slider = useRef();
+  const sliderPosition = useRef(0);
   const imgSize = "portrait_fantastic";
-
-  useEffect(() => {
-    getComics(true, 0);
-  }, [charData]);
-
-  const getComics = (next) => {
-    const charId = charData.data.results[0].id;
-    const limit = 18;
-    const url = `${sURL.baseUrl}/${charId}/comics?limit=${limit}&${sURL.ts}&${sURL.publicKey}&${sURL.md5Hash}`;
-    helpHttp()
-      .get(url)
-      .then((res) => {
-        setCharComics(res);
-        next
-          ? (offset.current = offset.current + 20)
-          : (offset.current = offset.current + 20);
-      });
-  };
 
   const slide = (step, next) => {
     slider.current.style.transform = `translate(${
-      next ? currPosition.current - step : currPosition.current + step
+      next ? sliderPosition.current - step : sliderPosition.current + step
     }px)`;
-    currPosition.current = next
-      ? currPosition.current - step
-      : currPosition.current + step;
+    sliderPosition.current = next
+      ? sliderPosition.current - step
+      : sliderPosition.current + step;
   };
 
   const handleSlide = (next) => {
     const wrapperWidth = sliderWrapper.current.clientWidth;
     const totalComics = charComics.data.total;
-    if (next && currPosition.current !== -totalComics) {
+    if (next && sliderPosition.current !== -totalComics) {
       slide(wrapperWidth, true);
       setVisibleCount(visibleCount + 3);
-    } else if (currPosition.current < 0) {
+    } else if (sliderPosition.current < 0) {
       slide(wrapperWidth, false);
       setVisibleCount(visibleCount - 3);
     }
