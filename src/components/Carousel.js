@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ComicCard from "./ComicCard";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ButtonSlider = styled.div`
   display: inherit;
@@ -57,11 +57,15 @@ const Page = styled.p`
 `;
 
 const Carousel = ({ comics }) => {
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [visibleCount, setVisibleCount] = useState(0);
   const sliderWrapper = useRef();
   const slider = useRef();
   const sliderPosition = useRef(0);
   const imgSize = "portrait_fantastic";
+
+  useEffect(() => {
+    setVisibleCount(cardsDisplayed());
+  }, []);
 
   const slide = (step, next) => {
     slider.current.style.transform = `translate(${
@@ -72,18 +76,22 @@ const Carousel = ({ comics }) => {
       : sliderPosition.current + step;
   };
 
-  const handleSlide = (next) => {
-    //could be more general with document.querySelector("card").clientWidht
+  const wrapperWidth = () => {
+    return sliderWrapper.current.clientWidth;
+  };
+
+  const cardsDisplayed = () => {
     const cardWidth = 208;
-    const wrapperWidth = sliderWrapper.current.clientWidth;
-    const cardsDisplayed = wrapperWidth / cardWidth;
-    /*Implement here, function getting comics when reaching sliding*/
+    return wrapperWidth() / cardWidth;
+  };
+
+  const handleSlide = (next) => {
     if (next) {
-      slide(wrapperWidth, true);
-      setVisibleCount(visibleCount + cardsDisplayed);
+      slide(wrapperWidth(), true);
+      setVisibleCount(visibleCount + cardsDisplayed());
     } else if (sliderPosition.current < 0) {
-      slide(wrapperWidth, false);
-      setVisibleCount(visibleCount - cardsDisplayed);
+      slide(wrapperWidth(), false);
+      setVisibleCount(visibleCount - cardsDisplayed());
     }
   };
 

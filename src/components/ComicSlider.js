@@ -2,7 +2,7 @@ import styled from "styled-components";
 import CharacterContext from "../context/CharacterContext";
 import Loader from "./Loader";
 import useGetComics from "../hooks/useGetComics";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Carousel from "./Carousel";
 
 const SectionSlider = styled.section`
@@ -10,13 +10,13 @@ const SectionSlider = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
+  position: relative;
 `;
 const SectionWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  position: relative;
   width: fit-content;
 `;
 const SectionTitle = styled.div`
