@@ -5,13 +5,19 @@ import Loader from "./Loader";
 import useGetComics from "../hooks/useGetComics";
 import { useContext, useRef, useState } from "react";
 
-const SectionContent = styled.section`
+const SectionSlider = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+`;
+const SectionWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  height: fit-content;
   position: relative;
+  width: fit-content;
 `;
 const SectionTitle = styled.div`
   width: 100%;
@@ -24,7 +30,7 @@ const SectionTitle = styled.div`
     margin: 10px;
 
     @media (max-width: 1366px) {
-      margin-top: 80px;
+      margin-top: 60px;
     }
   }
 `;
@@ -48,7 +54,15 @@ const SliderWrapper = styled.div`
   background-color: var(--light-gray);
 
   @media (max-width: 1366px) {
-    max-width: 416px;
+    max-width: 832px;
+  }
+
+  @media (max-width: 1152px) {
+    width: 624px;
+  }
+
+  @media (max-width: 832px) {
+    width: 416px;
   }
 
   @media (max-width: 550px) {
@@ -70,7 +84,7 @@ const Page = styled.p`
   text-align: center;
 
   @media (max-width: 1366px) {
-    margin-bottom: 100px;
+    margin-bottom: 65px;
   }
 `;
 
@@ -105,11 +119,11 @@ const ComicSlider = () => {
   };
 
   return (
-    <SectionContent>
+    <SectionSlider>
       {comics.length !== 0 ? (
-        <>
+        <SectionWrapper>
           <SectionTitle>
-            <h1>Comics for this character * {totalComics} * </h1>
+            <h1>{totalComics} - Comics for this character</h1>
           </SectionTitle>
           <ButtonSlider onClick={() => handleSlide(false)}>{`<`}</ButtonSlider>
           <SliderWrapper ref={sliderWrapper}>
@@ -127,11 +141,11 @@ const ComicSlider = () => {
           </SliderWrapper>
           <ButtonSlider onClick={() => handleSlide(true)}>{`>`}</ButtonSlider>
           <Page>{visibleCount} of first 20</Page>
-        </>
+        </SectionWrapper>
       ) : (
         <Loader></Loader>
       )}
-    </SectionContent>
+    </SectionSlider>
   );
 };
 

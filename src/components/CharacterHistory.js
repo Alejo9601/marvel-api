@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
-const DescContainer = styled.div`
+const SectionDescription = styled.section`
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  width: 100%;
   /* background-color: gray; */
 `;
 const Description = styled.div`
@@ -16,7 +15,6 @@ const Description = styled.div`
   h1,
   p {
     color: black;
-    font-weight: lighter;
     padding: 5px;
     margin: 10px;
   }
@@ -28,7 +26,7 @@ const Description = styled.div`
   }
 
   p {
-    font-size: 2rem;
+    font-size: 2.2rem;
     text-align: justify;
     line-height: 2.8rem;
     width: 725px;
@@ -40,6 +38,7 @@ const Description = styled.div`
 
     p {
       width: 770px;
+      font-size: 2.5rem;
     }
   }
 
@@ -49,7 +48,7 @@ const Description = styled.div`
     }
   }
 
-  @media (max-width: 882px) {
+  @media (max-width: 832px) {
     p {
       width: 480px;
     }
@@ -76,7 +75,7 @@ const CharacterHistory = ({ charData }) => {
   const data = charData.data.results[0].description;
 
   return (
-    <DescContainer>
+    <SectionDescription>
       <Description>
         <h1>Brief History</h1>
         <p>
@@ -90,7 +89,7 @@ const CharacterHistory = ({ charData }) => {
           )}
         </p>
       </Description>
-    </DescContainer>
+    </SectionDescription>
   );
 };
 
