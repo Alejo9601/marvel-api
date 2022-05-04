@@ -78,16 +78,14 @@ const CharacterHistory = ({ charData }) => {
     <SectionDescription>
       <Description>
         <h1>Brief History</h1>
-        <p>
-          {data !== "" ? (
-            data
-          ) : (
-            <NoDescription>
-              SORRY ... Marvel has no history provided <br></br> for this
-              character!
-            </NoDescription>
-          )}
-        </p>
+        {data !== "" ? (
+          <p>{data}</p>
+        ) : (
+          <NoDescription>
+            SORRY ... Marvel has no history provided <br></br> for this
+            character!
+          </NoDescription>
+        )}
       </Description>
     </SectionDescription>
   );

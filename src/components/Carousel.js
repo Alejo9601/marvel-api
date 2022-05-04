@@ -58,9 +58,9 @@ const Page = styled.p`
 
 const Carousel = ({ comics }) => {
   const [visibleCount, setVisibleCount] = useState(0);
+  const sliderPosition = useRef(0);
   const sliderWrapper = useRef();
   const slider = useRef();
-  const sliderPosition = useRef(0);
   const imgSize = "portrait_fantastic";
 
   useEffect(() => {
@@ -112,7 +112,9 @@ const Carousel = ({ comics }) => {
         </Slider>
       </SliderWrapper>
       <ButtonSlider onClick={() => handleSlide(true)}>{`>`}</ButtonSlider>
-      <Page>{visibleCount} of first 20</Page>
+      <Page>
+        {visibleCount} of {comics.length} retrieved
+      </Page>
     </>
   );
 };
