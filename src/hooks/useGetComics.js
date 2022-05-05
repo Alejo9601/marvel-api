@@ -1,34 +1,39 @@
 import { useEffect, useRef, useState } from "react";
 import { helpHttp } from "../helpers/helpHttp";
-import isEmptyObject from "../helpers/isEmpyObject";
 import { comicsUrlFor } from "../helpers/urlsGenerator";
 
-const useGetComics = (charId) => {
-  const [charComics, setCharComics] = useState({});
+const useGetComics = (refId) => {
+  const [comics, setComics] = useState([]);
+  const [comicsHeader, setComicsHeader] = useState({});
   const limitPerQuery = 18;
-  const queryOffset = useRef(limitPerQuery);
+  const queryOffset = useRef(0);
 
   const updateQueryOffset = () => {
     queryOffset.current = queryOffset.current + limitPerQuery;
   };
 
+  const appendNewComics = (newComics) => {
+    return comics.concat(newComics.data.results);
+  };
+
   const getComics = () => {
     helpHttp()
-      .get(comicsUrlFor(charId, limitPerQuery))
+      .get(comicsUrlFor(refId, limitPerQuery, queryOffset.current))
       .then((res) => {
-        setCharComics(
-          !isEmptyObject(charComics) ? { ...charComics, ...res } : res
+        setComics(
+          comics.lenght !== 0 ? appendNewComics(res) : res.data.results
         );
+        setComicsHeader({ total: res.data.total, count: res.data.count });
         updateQueryOffset();
       });
   };
 
   useEffect(() => {
     getComics();
-  }, [charId]);
+  }, [refId]);
 
-  return Object.keys(charComics).length !== 0
-    ? [charComics.data.results, charComics.data.total]
+  return comics.length !== 0
+    ? [comics, comicsHeader.total, getComics]
     : [[], 0];
 };
 

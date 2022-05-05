@@ -56,7 +56,7 @@ const Page = styled.p`
   }
 `;
 
-const Carousel = ({ comics }) => {
+const Carousel = ({ comics, getComics }) => {
   const [visibleCount, setVisibleCount] = useState(0);
   const sliderPosition = useRef(0);
   const sliderWrapper = useRef();
@@ -64,7 +64,7 @@ const Carousel = ({ comics }) => {
   const imgSize = "portrait_fantastic";
 
   useEffect(() => {
-    setVisibleCount(cardsDisplayed());
+    setVisibleCount(numOfcardsOnScreen());
   }, []);
 
   const slide = (step, next) => {
@@ -80,18 +80,22 @@ const Carousel = ({ comics }) => {
     return sliderWrapper.current.clientWidth;
   };
 
-  const cardsDisplayed = () => {
+  const numOfcardsOnScreen = () => {
     const cardWidth = 208;
     return wrapperWidth() / cardWidth;
   };
 
   const handleSlide = (next) => {
+    if (visibleCount >= comics.length - numOfcardsOnScreen()) {
+      getComics();
+    }
+
     if (next) {
       slide(wrapperWidth(), true);
-      setVisibleCount(visibleCount + cardsDisplayed());
+      setVisibleCount(visibleCount + numOfcardsOnScreen());
     } else if (sliderPosition.current < 0) {
       slide(wrapperWidth(), false);
-      setVisibleCount(visibleCount - cardsDisplayed());
+      setVisibleCount(visibleCount - numOfcardsOnScreen());
     }
   };
 

@@ -37,7 +37,9 @@ const SectionTitle = styled.div`
 
 const ComicSlider = () => {
   const { charData } = useContext(CharacterContext);
-  const [comics, totalComics] = useGetComics(charData.data.results[0].id);
+  const [comics, totalComics, getComics] = useGetComics(
+    charData.data.results[0].id
+  );
 
   return (
     <SectionSlider>
@@ -46,7 +48,7 @@ const ComicSlider = () => {
           <SectionTitle>
             <h1>{totalComics} - Comics for this character</h1>
           </SectionTitle>
-          <Carousel comics={comics}></Carousel>
+          <Carousel comics={comics} getComics={getComics}></Carousel>
         </SectionWrapper>
       ) : (
         <Loader></Loader>
