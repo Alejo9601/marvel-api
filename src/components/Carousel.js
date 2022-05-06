@@ -65,7 +65,7 @@ const Carousel = ({ comics, getComics }) => {
 
   useEffect(() => {
     setVisibleCount(numOfcardsOnScreen());
-  }, []);
+  }, [comics]);
 
   const slide = (step, next) => {
     slider.current.style.transform = `translate(${

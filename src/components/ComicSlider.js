@@ -2,7 +2,7 @@ import styled from "styled-components";
 import CharacterContext from "../context/CharacterContext";
 import Loader from "./Loader";
 import useGetComics from "../hooks/useGetComics";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Carousel from "./Carousel";
 
 const SectionSlider = styled.section`
@@ -37,9 +37,11 @@ const SectionTitle = styled.div`
 
 const ComicSlider = () => {
   const { charData } = useContext(CharacterContext);
-  const [comics, totalComics, getComics] = useGetComics(
-    charData.data.results[0].id
-  );
+  const [comics, totalComics, getComics, setRefId] = useGetComics();
+
+  useEffect(() => {
+    setRefId(charData.data.results[0].id);
+  }, [charData]);
 
   return (
     <SectionSlider>
