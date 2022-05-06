@@ -65,10 +65,30 @@ const Description = styled.div`
 
 const NoDescription = styled.h3`
   font-size: 2rem;
-  padding: 20px;
+  padding: 22px 10px 22px 10px;
+  margin: 22px 10px 22px 10px;
   background-color: #ff4040;
   text-align: center;
   border-radius: 10px;
+  width: 700px;
+
+  @media (max-width: 1366px) {
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 770px;
+  }
+
+  @media (max-width: 1152px) {
+    width: 620px;
+  }
+
+  @media (max-width: 832px) {
+    width: 480px;
+  }
+
+  @media (max-width: 550px) {
+    width: 350px;
+  }
 `;
 
 const CharacterHistory = ({ charData }) => {
@@ -82,8 +102,8 @@ const CharacterHistory = ({ charData }) => {
           <p>{data}</p>
         ) : (
           <NoDescription>
-            SORRY ... Marvel has no history provided <br></br> for this
-            character!
+            SORRY ... Unfortunately Marvel has no history provided <br></br> for
+            this character!
           </NoDescription>
         )}
       </Description>
