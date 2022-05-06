@@ -64,7 +64,7 @@ const Carousel = ({ comics, getComics }) => {
   const imgSize = "portrait_fantastic";
 
   useEffect(() => {
-    setVisibleCount(numOfcardsOnScreen());
+    if (comics.length === 0) setVisibleCount(numOfcardsOnScreen());
   }, [comics]);
 
   const slide = (step, next) => {
