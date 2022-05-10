@@ -31,6 +31,7 @@ const useGetComics = () => {
   useEffect(() => {
     if (refId) {
       comics.current = [];
+      queryOffset.current = 0;
       getComics();
     }
   }, [refId]);
