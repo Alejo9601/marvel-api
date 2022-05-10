@@ -6,6 +6,7 @@ const ImgContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  grid-row: span 2;
   /* background-color: gray; */
 
   @media (max-width: 1366px) {

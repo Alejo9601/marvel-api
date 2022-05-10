@@ -10,6 +10,7 @@ const SectionSlider = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
+  height: fit-content;
   position: relative;
 `;
 const SectionWrapper = styled.div`

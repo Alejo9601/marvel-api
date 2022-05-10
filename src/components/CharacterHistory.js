@@ -4,6 +4,8 @@ const SectionDescription = styled.section`
   display: flex;
   justify-content: center;
   width: 100%;
+  height: fit-content;
+  padding-top: 35px;
   /* background-color: gray; */
 `;
 const Description = styled.div`
