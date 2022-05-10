@@ -46,9 +46,12 @@ const SearchBar = () => {
       helpHttp()
         .get(characterUrlFor(charName))
         .then((res) => {
-          setCharData(res);
+          setCharData({});
           event.target.value = "";
           document.activeElement?.blur();
+          setTimeout(() => {
+            setCharData(res);
+          }, 1000);
         });
     }
   };

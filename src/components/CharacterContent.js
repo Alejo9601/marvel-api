@@ -22,7 +22,7 @@ const CharacterContent = () => {
 
   return (
     <GridContainer>
-      {charData ? (
+      {Object.keys(charData).length !== 0 ? (
         <>
           {charData.data.results[0] ? (
             <>

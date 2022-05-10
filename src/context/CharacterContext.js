@@ -5,7 +5,7 @@ import { characterUrlFor } from "../helpers/urlsGenerator";
 const HeroContext = createContext();
 
 const HeroProvider = ({ children }) => {
-  const [charData, setCharData] = useState();
+  const [charData, setCharData] = useState({});
 
   useEffect(() => {
     helpHttp()
