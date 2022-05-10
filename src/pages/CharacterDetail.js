@@ -1,12 +1,11 @@
 import { useContext } from "react";
 import CharacterContext from "../context/CharacterContext";
 import styled from "styled-components";
-import Loader from "./Loader";
-import Message from "./Message";
-import CharacterImage from "./CharacterImage";
-import CharacterInfo from "./CharacterInfo";
-import CharacterHistory from "./CharacterHistory";
-import ComicSlider from "./ComicSlider";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
+import CharacterImage from "../components/CharacterImage";
+import CharacterHistory from "../components/CharacterHistory";
+import ComicSlider from "../components/ComicSlider";
 
 const GridContainer = styled.section`
   height: 100%;
@@ -20,7 +19,7 @@ const GridContainer = styled.section`
   }
 `;
 
-const CharacterContent = () => {
+const CharacterDetail = () => {
   const { charData } = useContext(CharacterContext);
 
   return (
@@ -44,4 +43,4 @@ const CharacterContent = () => {
   );
 };
 
-export default CharacterContent;
+export default CharacterDetail;

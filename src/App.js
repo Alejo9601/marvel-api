@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import CharacterContent from "./components/CharacterContent";
+import CharacterDetail from "./pages/CharacterDetail";
 import { HeroProvider } from "./context/CharacterContext";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <HeroProvider>
         <Header />
-        <CharacterContent />
+        <CharacterDetail />
       </HeroProvider>
     </div>
   );
