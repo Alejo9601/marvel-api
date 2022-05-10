@@ -8,6 +8,7 @@ const StyledHeader = styled.header`
   width: 100%;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   box-shadow: 0px 0px 5px 0px black;
   flex-wrap: wrap;
 `;

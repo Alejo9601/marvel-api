@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 const StyledLi = styled.li`
-  margin: 10px 25px 10px 25px;
-  padding: 5px 10px 5px 10px;
-
   a {
+    display: inline-block;
     color: white;
     font-size: 1.8rem;
     text-decoration: none;
+    padding: 10px 25px 10px 25px;
   }
 
   &:hover {
