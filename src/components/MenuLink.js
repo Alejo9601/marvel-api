@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledLi = styled.li`
@@ -22,9 +23,7 @@ const StyledLi = styled.li`
 const MenuLink = ({ textValue, refTo }) => {
   return (
     <StyledLi>
-      <a href={refTo} target="_blank" rel="noreferrer">
-        {textValue}
-      </a>
+      <Link to={refTo}>{textValue}</Link>
     </StyledLi>
   );
 };

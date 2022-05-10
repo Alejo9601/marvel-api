@@ -12,6 +12,10 @@ const CharacterList = () => {
   const [characters, totalCharacters, getCharacters] = useGetCharacters();
   const imgSize = "standard_fantastic";
 
+  const handleClick = () => {
+    alert("te presione");
+  };
+
   return (
     <ListOfCharacters>
       {characters.map((character) => (
@@ -21,6 +25,8 @@ const CharacterList = () => {
             "http",
             "https"
           )}
+          charName={character.name}
+          handleClick={handleClick}
         />
       ))}
     </ListOfCharacters>
