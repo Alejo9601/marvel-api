@@ -7,3 +7,7 @@ export const comicsUrlFor = (charId, limit, offset) => {
 export const characterUrlFor = (charName) => {
   return `${sURL.baseUrl}${sURL.charRequest}${charName}&${sURL.ts}&${sURL.publicKey}&${sURL.md5Hash}`;
 };
+
+export const charactersUrl = (limit, offset) => {
+  return `${sURL.baseUrl}?limit=${limit}&offset=${offset}&${sURL.ts}&${sURL.publicKey}&${sURL.md5Hash}`;
+};
