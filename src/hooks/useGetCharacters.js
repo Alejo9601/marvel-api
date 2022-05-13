@@ -26,9 +26,11 @@ const useGetCharacters = () => {
       });
   };
 
-  return characters.length !== 0
-    ? [characters, getCharacters]
-    : [[], getCharacters];
+  useEffect(() => {
+    getCharacters();
+  }, []);
+
+  return { characters, getCharacters };
 };
 
 export default useGetCharacters;

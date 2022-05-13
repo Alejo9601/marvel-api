@@ -1,54 +1,35 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
-import CharacterCard from "../components/CharacterCard";
-import Loader from "../components/Loader";
+import ListOfCharacters from "../components/ListOfCharacters";
 import useGetCharacters from "../hooks/useGetCharacters";
 
-const ListOfCharacters = styled.section`
+const Characters = styled.section`
   min-height: 100vh;
   width: 900px;
   display: flex;
   flex-wrap: wrap;
 `;
+const Button = styled.div`
+  cursor: pointer;
+  background-color: lightblue;
+  color: white;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 20px;
+`;
 
 const CharacterList = () => {
-  const [characters, getCharacters] = useGetCharacters();
-  const [charArray, setCharArray] = useState([]);
-  const imgSize = "standard_fantastic";
+  const { characters, getCharacters } = useGetCharacters();
 
-  const handleScroll = () => {
-    var y = window.scrollY;
-    if (y > window.innerHeight) {
-      getCharacters();
-    }
+  const handleClick = () => {
+    getCharacters();
   };
 
-  useEffect(() => {
-    getCharacters();
-    window.addEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setCharArray(characters);
-  }, [characters]);
-
   return (
-    <ListOfCharacters>
-      {charArray.length !== 0 ? (
-        charArray.map((character) => (
-          <CharacterCard
-            key={character.id}
-            imgSrc={`${character.thumbnail.path}/${imgSize}.jpg`.replace(
-              "http",
-              "https"
-            )}
-            charName={character.name}
-          />
-        ))
-      ) : (
-        <Loader />
-      )}
-    </ListOfCharacters>
+    <Characters>
+      <Button onClick={handleClick}>CLICK TO LOAD NEW CHARACTERS</Button>
+      <ListOfCharacters characters={characters} />
+    </Characters>
   );
 };
 
