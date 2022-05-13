@@ -58,7 +58,7 @@ const Page = styled.p`
   }
 `;
 
-const Carousel = ({ comics, getComics }) => {
+const CarouselOfComics = ({ comics, getComics }) => {
   const sliderWrapper = useRef();
   const slider = useRef();
   const { handleSlide, resetSliderData, cardsPerSlide, visibleCount } =
@@ -93,4 +93,4 @@ const Carousel = ({ comics, getComics }) => {
   );
 };
 
-export default Carousel;
+export default CarouselOfComics;

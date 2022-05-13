@@ -13,6 +13,7 @@ const Button = styled.div`
   background-color: lightblue;
   color: white;
   width: 100%;
+  height: fit-content;
   text-align: center;
   font-size: 2rem;
   margin-top: 20px;

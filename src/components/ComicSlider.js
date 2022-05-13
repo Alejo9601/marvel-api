@@ -3,7 +3,7 @@ import CharacterContext from "../context/CharacterContext";
 import Loader from "./Loader";
 import useGetComics from "../hooks/useGetComics";
 import { useContext, useEffect } from "react";
-import Carousel from "./Carousel";
+import CarouselOfComics from "./CarouselOfComics";
 
 const SectionSlider = styled.section`
   display: flex;
@@ -22,7 +22,6 @@ const SectionWrapper = styled.div`
 `;
 const SectionTitle = styled.div`
   width: 100%;
-
   h1 {
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -51,7 +50,10 @@ const ComicSlider = () => {
           <SectionTitle>
             <h1>{totalComics} - Comics for this character</h1>
           </SectionTitle>
-          <Carousel comics={comics} getComics={getComics}></Carousel>
+          <CarouselOfComics
+            comics={comics}
+            getComics={getComics}
+          ></CarouselOfComics>
         </SectionWrapper>
       ) : (
         <Loader></Loader>
