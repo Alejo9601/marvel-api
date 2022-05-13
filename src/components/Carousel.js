@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import ComicCard from "./ComicCard";
 import { useEffect, useRef, useState } from "react";
+import useSliderHandler from "../hooks/useSliderHandler";
+import ListOfComics from "./ListOfComics";
 
 const ButtonSlider = styled.div`
   display: inherit;
@@ -57,81 +59,33 @@ const Page = styled.p`
 `;
 
 const Carousel = ({ comics, getComics }) => {
-  const [visibleCount, setVisibleCount] = useState();
-  const sliderPosition = useRef();
   const sliderWrapper = useRef();
   const slider = useRef();
-  const imgSize = "portrait_fantastic";
+  const { handleSlide, resetSliderData, cardsPerSlide, visibleCount } =
+    useSliderHandler(sliderWrapper, slider);
 
   useEffect(() => {
-    setVisibleCount(cardsPerSlide());
-  }, []);
-
-  useEffect(() => {
-    if (comics.length === 18) {
+    if (comics.length === 18 && sliderWrapper.current && slider.current) {
       resetSliderData();
     }
   }, [comics]);
 
-  const resetSliderData = () => {
-    slideToStart();
-    setVisibleCount(cardsPerSlide());
-  };
-
-  const slideToStart = () => {
-    slider.current.style.transform = `translate(0)`;
-    sliderPosition.current = 0;
-  };
-
-  const slide = (step, next) => {
-    slider.current.style.transform = `translate(${
-      next ? sliderPosition.current - step : sliderPosition.current + step
-    }px)`;
-    sliderPosition.current = next
-      ? sliderPosition.current - step
-      : sliderPosition.current + step;
-  };
-
-  const wrapperWidth = () => {
-    return sliderWrapper.current.clientWidth;
-  };
-
-  const cardsPerSlide = () => {
-    const cardWidth = 208;
-    return wrapperWidth() / cardWidth;
-  };
-
-  const handleSlide = (next) => {
+  const handleClick = (nextBtn) => {
     if (visibleCount >= comics.length - cardsPerSlide()) {
       getComics();
     }
-
-    if (next) {
-      slide(wrapperWidth(), true);
-      setVisibleCount(visibleCount + cardsPerSlide());
-    } else if (sliderPosition.current < 0) {
-      slide(wrapperWidth(), false);
-      setVisibleCount(visibleCount - cardsPerSlide());
-    }
+    handleSlide(nextBtn);
   };
 
   return (
     <>
-      <ButtonSlider onClick={() => handleSlide(false)}>{`<`}</ButtonSlider>
+      <ButtonSlider onClick={() => handleClick(false)}>{`<`}</ButtonSlider>
       <SliderWrapper ref={sliderWrapper}>
         <Slider ref={slider}>
-          {comics.map((comic) => (
-            <ComicCard
-              key={comic.id}
-              imgSrc={`${comic.thumbnail.path}/${imgSize}.jpg`.replace(
-                "http",
-                "https"
-              )}
-            />
-          ))}
+          <ListOfComics comics={comics} />
         </Slider>
       </SliderWrapper>
-      <ButtonSlider onClick={() => handleSlide(true)}>{`>`}</ButtonSlider>
+      <ButtonSlider onClick={() => handleClick(true)}>{`>`}</ButtonSlider>
       <Page>
         {visibleCount} of {comics.length} retrieved
       </Page>
