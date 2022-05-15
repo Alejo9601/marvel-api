@@ -15,11 +15,6 @@ const Card = styled(Link)`
     cursor: pointer;
     transform: scale(1.05);
   }
-  /* background-color: black; */
-  /* 
-  @media (max-width: 550px) {
-    min-width: ;
-  } */
 
   h3 {
     width: 100%;
@@ -27,23 +22,20 @@ const Card = styled(Link)`
     font-size: 1.5rem;
   }
 `;
-const ImageContainer = styled.picture`
-  min-height: 250px;
-  overflow: hidden;
-`;
+
 const CardImage = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
 `;
 
-const CharacterCard = ({ imgSrc, charName, handleClick }) => {
+const CharacterCard = ({ imgSrc, charName }) => {
   return (
     <Card to={`/character-detail/${charName}`}>
-      <ImageContainer>
+      <picture>
         <source srcSet={imgSrc} />
         <CardImage src={imgSrc} alt="comic" />
-      </ImageContainer>
+      </picture>
       <h3>{charName}</h3>
     </Card>
   );

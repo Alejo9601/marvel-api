@@ -12,6 +12,8 @@ const SectionSlider = styled.section`
   width: 100%;
   height: fit-content;
   position: relative;
+  /* background-color: beige; */
+  align-self: start;
 `;
 const SectionWrapper = styled.div`
   display: flex;

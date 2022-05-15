@@ -5,8 +5,8 @@ const SectionDescription = styled.section`
   justify-content: center;
   width: 100%;
   height: fit-content;
-  padding-top: 35px;
   /* background-color: gray; */
+  align-self: center;
 `;
 const Description = styled.div`
   display: flex;

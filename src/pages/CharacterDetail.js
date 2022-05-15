@@ -11,8 +11,8 @@ import { useParams } from "react-router-dom";
 const GridContainer = styled.section`
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  grid-template-rows: 1fr 1.5fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   flex-grow: 1;
 
   @media (max-width: 1366px) {

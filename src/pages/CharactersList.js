@@ -7,6 +7,7 @@ const Characters = styled.section`
   width: 900px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 const Button = styled.div`
   cursor: pointer;
