@@ -20,29 +20,34 @@ const CharName = styled.h1`
 `;
 const Img = styled.img`
   height: 650px;
-  width: auto;
+  width: 650px;
   object-fit: cover;
   border-radius: 5px;
   box-shadow: -2px 2px 5px 0px black;
 
   @media (max-width: 1750px) {
     height: 550px;
+    width: 550px;
   }
 
   @media (max-width: 1366px) {
     height: 800px;
+    width: 800px;
   }
 
   @media (max-width: 1152px) {
     height: 650px;
+    width: 650px;
   }
 
   @media (max-width: 832px) {
     height: 500px;
+    width: 500px;
   }
 
   @media (max-width: 550px) {
     height: 350px;
+    width: 350px;
   }
 `;
 

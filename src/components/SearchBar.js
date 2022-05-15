@@ -46,8 +46,8 @@ const SearchBar = () => {
     if (event.target.value !== "") {
       const charName = inputRef.current.value;
       setCharName("");
-      // event.target.value = "";
-      // document.activeElement?.blur();
+      event.target.value = "";
+      document.activeElement?.blur();
       setTimeout(() => {
         navigate(`/character-detail/${charName}`);
       }, 1000);
