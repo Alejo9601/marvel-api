@@ -20,10 +20,16 @@ const StyledLi = styled.li`
   }
 `;
 
-const MenuLink = ({ textValue, refTo }) => {
+const MenuLink = ({ textValue, refTo, external }) => {
   return (
     <StyledLi>
-      <Link to={refTo}>{textValue}</Link>
+      {external ? (
+        <a href={refTo} target="_blank" rel="noreferrer">
+          {textValue}
+        </a>
+      ) : (
+        <Link to={refTo}>{textValue}</Link>
+      )}
     </StyledLi>
   );
 };
