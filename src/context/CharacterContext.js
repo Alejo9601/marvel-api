@@ -6,16 +6,21 @@ const HeroContext = createContext();
 
 const HeroProvider = ({ children }) => {
   const [charData, setCharData] = useState({});
+  const [charName, setCharName] = useState("");
 
   useEffect(() => {
-    helpHttp()
-      .get(characterUrlFor("hulk"))
-      .then((res) => setCharData(res));
-  }, []);
+    if (charName !== "") {
+      helpHttp()
+        .get(characterUrlFor(charName))
+        .then((res) => setCharData(res));
+    } else {
+      setCharData({});
+    }
+  }, [charName]);
 
   const data = {
     charData,
-    setCharData,
+    setCharName,
   };
 
   return <HeroContext.Provider value={data}>{children}</HeroContext.Provider>;

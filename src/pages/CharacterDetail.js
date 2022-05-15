@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import CharacterContext from "../context/CharacterContext";
 import styled from "styled-components";
 import Loader from "../components/Loader";
@@ -6,6 +6,7 @@ import Message from "../components/Message";
 import CharacterImage from "../components/CharacterImage";
 import CharacterHistory from "../components/CharacterHistory";
 import ComicSlider from "../components/ComicSlider";
+import { useParams } from "react-router-dom";
 
 const GridContainer = styled.section`
   height: 100%;
@@ -20,7 +21,15 @@ const GridContainer = styled.section`
 `;
 
 const CharacterDetail = () => {
-  const { charData } = useContext(CharacterContext);
+  const { charName } = useParams();
+  const { charData, setCharName } = useContext(CharacterContext);
+
+  useEffect(() => {
+    setCharName(charName);
+    return () => {
+      setCharName("");
+    };
+  }, [charName]);
 
   return (
     <GridContainer>

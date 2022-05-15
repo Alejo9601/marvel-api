@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import CharacterContent from "../context/CharacterContext";
 import { helpHttp } from "../helpers/helpHttp";
 import { characterUrlFor } from "../helpers/urlsGenerator";
 
-const Container = styled.div`
+const Container = styled.form`
   display: flex;
   align-items: center;
 
@@ -36,33 +37,30 @@ const Input = styled.input`
 `;
 
 const SearchBar = () => {
-  const { setCharData } = useContext(CharacterContent);
+  const { setCharName } = useContext(CharacterContent);
+  const inputRef = useRef();
+  const navigate = useNavigate();
 
-  const handleKeyDown = (event) => {
-    let keyPressed = document.all ? event.keyCode : event.which;
-    let enter = 13;
-    if (keyPressed === enter && event.target.value !== "") {
-      const charName = event.target.value;
-      helpHttp()
-        .get(characterUrlFor(charName))
-        .then((res) => {
-          setCharData({});
-          event.target.value = "";
-          document.activeElement?.blur();
-          setTimeout(() => {
-            setCharData(res);
-          }, 1000);
-        });
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (event.target.value !== "") {
+      const charName = inputRef.current.value;
+      setCharName("");
+      // event.target.value = "";
+      // document.activeElement?.blur();
+      setTimeout(() => {
+        navigate(`/character-detail/${charName}`);
+      }, 1000);
     }
   };
 
   return (
-    <Container>
+    <Container onSubmit={handleSubmit}>
       <Input
         type="text"
         name="search"
         placeholder="make a character search here..."
-        onKeyDown={handleKeyDown}
+        ref={inputRef}
       ></Input>
     </Container>
   );
