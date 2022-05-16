@@ -34,6 +34,9 @@ const useGetComics = () => {
       queryOffset.current = 0;
       getComics();
     }
+    return () => {
+      comics.current = [];
+    };
   }, [refId]);
 
   return comics.length !== 0

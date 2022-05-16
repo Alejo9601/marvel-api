@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 
 const SectionDescription = styled.section`
@@ -13,12 +14,13 @@ const Description = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-content: flex-start;
+  margin-right: 40px;
 
   h1,
   p {
     color: black;
     padding: 5px;
-    margin: 10px;
+    margin: 5px 5px 5px 5px;
   }
 
   h1 {
@@ -64,7 +66,6 @@ const Description = styled.div`
     }
   }
 `;
-
 const NoDescription = styled.h3`
   font-size: 2rem;
   padding: 22px 10px 22px 10px;
@@ -92,9 +93,20 @@ const NoDescription = styled.h3`
     width: 350px;
   }
 `;
+const Button = styled.a`
+  background-color: #2155cd;
+  font-size: 1.5rem;
+  color: white;
+  width: fit-content;
+  text-decoration: none;
+  align-self: center;
+  padding: 5px;
+  border-radius: 5px;
+`;
 
 const CharacterHistory = ({ charData }) => {
   const data = charData.data.results[0].description;
+  const sourceUrl = charData.data.results[0].urls[0].url;
 
   return (
     <SectionDescription>
@@ -108,6 +120,9 @@ const CharacterHistory = ({ charData }) => {
             this character!
           </NoDescription>
         )}
+        <Button href={sourceUrl} target="_blank" rel="noreferrer">
+          See on Marvel
+        </Button>
       </Description>
     </SectionDescription>
   );

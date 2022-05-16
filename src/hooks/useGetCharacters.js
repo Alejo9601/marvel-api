@@ -29,6 +29,9 @@ const useGetCharacters = () => {
 
   useEffect(() => {
     getCharacters();
+    return () => {
+      setCharacters([]);
+    };
   }, []);
 
   return { characters, getCharacters };

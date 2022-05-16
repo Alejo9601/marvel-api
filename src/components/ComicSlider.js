@@ -29,7 +29,7 @@ const SectionTitle = styled.div`
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 3rem;
     padding: 5px;
-    margin: 10px;
+    margin: 5px;
 
     @media (max-width: 1366px) {
       margin-top: 60px;
