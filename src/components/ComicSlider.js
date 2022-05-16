@@ -52,13 +52,10 @@ const ComicSlider = () => {
           <SectionTitle>
             <h1>{totalComics} - Comics for this character</h1>
           </SectionTitle>
-          <CarouselOfComics
-            comics={comics}
-            getComics={getComics}
-          ></CarouselOfComics>
+          <CarouselOfComics comics={comics} getComics={getComics} />
         </SectionWrapper>
       ) : (
-        <Loader></Loader>
+        <Loader />
       )}
     </SectionSlider>
   );

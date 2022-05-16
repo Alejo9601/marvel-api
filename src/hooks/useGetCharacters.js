@@ -11,8 +11,7 @@ const useGetCharacters = () => {
     setQueryOffset((prevOffset) => prevOffset + LIMIT_PER_QUERY);
   };
 
-  const appendNewCharacters = (newCharacters) => {
-    const newChars = newCharacters.data.results;
+  const appendNewCharacters = (newChars) => {
     characters.length === 0
       ? setCharacters(newChars)
       : setCharacters((prevCharacters) => prevCharacters.concat(newChars));
@@ -22,7 +21,7 @@ const useGetCharacters = () => {
     helpHttp()
       .get(charactersUrl(LIMIT_PER_QUERY, queryOffset))
       .then((res) => {
-        appendNewCharacters(res);
+        appendNewCharacters(res.data.results);
         updateQueryOffset();
       });
   };
