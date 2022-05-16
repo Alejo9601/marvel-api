@@ -5,10 +5,11 @@ import { charactersUrl } from "../helpers/urlsGenerator";
 const useGetCharacters = () => {
   const [characters, setCharacters] = useState([]);
   const limitPerQuery = 20;
-  const queryOffset = useRef(0);
+  const [queryOffset, setQueryOffset] = useState(0);
+  // const queryOffset = useRef(0);
 
   const updateQueryOffset = () => {
-    queryOffset.current = queryOffset.current + limitPerQuery;
+    setQueryOffset((prevState) => prevState + limitPerQuery);
   };
 
   const appendNewCharacters = (newCharacters) => {
@@ -17,7 +18,7 @@ const useGetCharacters = () => {
 
   const getCharacters = () => {
     helpHttp()
-      .get(charactersUrl(limitPerQuery, queryOffset.current))
+      .get(charactersUrl(limitPerQuery, queryOffset))
       .then((res) => {
         setCharacters(
           characters.length !== 0 ? appendNewCharacters(res) : res.data.results
