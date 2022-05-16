@@ -37,19 +37,17 @@ const Input = styled.input`
 `;
 
 const SearchBar = () => {
-  const { setCharName } = useContext(CharacterContent);
   const inputRef = useRef();
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (event.target.value !== "") {
+    if (inputRef.current.value !== "") {
       const charName = inputRef.current.value;
-      setCharName("");
-      event.target.value = "";
+      inputRef.current.value = "";
       document.activeElement?.blur();
       setTimeout(() => {
-        navigate(`/character-detail/${charName}`);
+        navigate(`/character-search/${charName}`);
       }, 1000);
     }
   };

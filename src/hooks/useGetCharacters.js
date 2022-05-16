@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { helpHttp } from "../helpers/helpHttp";
 import { charactersUrl } from "../helpers/urlsGenerator";
 
@@ -30,6 +30,7 @@ const useGetCharacters = () => {
     getCharacters();
     return () => {
       setCharacters([]);
+      updateQueryOffset(0);
     };
   }, []);
 
