@@ -4,25 +4,25 @@ import { charactersUrl } from "../helpers/urlsGenerator";
 
 const useGetCharacters = () => {
   const [characters, setCharacters] = useState([]);
-  const limitPerQuery = 20;
   const [queryOffset, setQueryOffset] = useState(0);
-  // const queryOffset = useRef(0);
+  const LIMIT_PER_QUERY = 20;
 
   const updateQueryOffset = () => {
-    setQueryOffset((prevState) => prevState + limitPerQuery);
+    setQueryOffset((prevState) => prevState + LIMIT_PER_QUERY);
   };
 
   const appendNewCharacters = (newCharacters) => {
-    return characters.concat(newCharacters.data.results);
+    const newChars = newCharacters.data.results;
+    characters.length === 0
+      ? setCharacters(newChars)
+      : setCharacters((prevCharacters) => prevCharacters.concat(newChars));
   };
 
   const getCharacters = () => {
     helpHttp()
-      .get(charactersUrl(limitPerQuery, queryOffset))
+      .get(charactersUrl(LIMIT_PER_QUERY, queryOffset))
       .then((res) => {
-        setCharacters(
-          characters.length !== 0 ? appendNewCharacters(res) : res.data.results
-        );
+        appendNewCharacters(res);
         updateQueryOffset();
       });
   };
