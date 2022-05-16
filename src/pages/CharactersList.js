@@ -1,6 +1,10 @@
+import { useCallback, useEffect, useRef } from "react";
 import styled from "styled-components";
 import ListOfCharacters from "../components/ListOfCharacters";
 import useGetCharacters from "../hooks/useGetCharacters";
+import useObserver from "../hooks/useObserver";
+import debounce from "just-debounce-it";
+import Loader from "../components/Loader";
 
 const Characters = styled.section`
   min-height: 100vh;
@@ -8,6 +12,7 @@ const Characters = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-end;
 `;
 const Button = styled.div`
   cursor: pointer;
@@ -19,18 +24,42 @@ const Button = styled.div`
   font-size: 2rem;
   margin-top: 20px;
 `;
+const TopBottomVisor = styled.div`
+  width: 100%;
+  text-align: center;
+  background-color: blue;
+  position: absolute;
+`;
 
 const CharacterList = () => {
   const { characters, getCharacters } = useGetCharacters();
+  const toObserve = useRef();
+  const [observer, setElements, entries] = useObserver({
+    rootMargin: "500px", // half of item height
+    root: null, // default, use viewport
+  });
 
-  const handleClick = () => {
-    getCharacters();
-  };
+  const getNewCharacters = useCallback(debounce(getCharacters, 500), [entries]);
+
+  useEffect(() => {
+    const elements = [toObserve.current];
+    setElements(elements);
+  }, []);
+
+  useEffect(() => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        getNewCharacters();
+      }
+    });
+  }, [entries]);
 
   return (
     <Characters>
-      <Button onClick={handleClick}>CLICK TO LOAD NEW CHARACTERS</Button>
       <ListOfCharacters characters={characters} />
+      <TopBottomVisor ref={toObserve}>
+        <Loader />
+      </TopBottomVisor>
     </Characters>
   );
 };
