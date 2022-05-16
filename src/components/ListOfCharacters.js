@@ -2,7 +2,7 @@ import CharacterCard from "./CharacterCard";
 import Loader from "./Loader";
 
 const ListOfCharacters = ({ characters }) => {
-  const imgSize = "standard_fantastic";
+  const imgSize = "standard_fanstastic";
 
   return (
     <>

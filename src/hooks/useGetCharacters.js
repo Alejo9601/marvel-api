@@ -8,7 +8,7 @@ const useGetCharacters = () => {
   const LIMIT_PER_QUERY = 20;
 
   const updateQueryOffset = () => {
-    setQueryOffset((prevState) => prevState + LIMIT_PER_QUERY);
+    setQueryOffset((prevOffset) => prevOffset + LIMIT_PER_QUERY);
   };
 
   const appendNewCharacters = (newCharacters) => {

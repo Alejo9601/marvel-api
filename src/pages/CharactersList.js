@@ -8,7 +8,7 @@ import Loader from "../components/Loader";
 
 const Characters = styled.section`
   min-height: 100vh;
-  width: 900px;
+  max-width: 900px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
