@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { helpHttp } from "../helpers/helpHttp";
-import { charactersUrl, comicsUrlFor } from "../helpers/urlsGenerator";
+import {
+  charactersUrl,
+  charVariantsUrl,
+  comicsUrlFor,
+} from "../helpers/urlsGenerator";
 
 const useMarvelApi = () => {
   const [dataResults, setDataResults] = useState([]);
   const [dataHeader, setDataHeader] = useState({});
   const [queryOffset, setQueryOffset] = useState(0);
+  //This can be a state, each component should be able to choose this param
   const LIMIT_PER_QUERY = 18;
 
   const updateQueryOffset = () => {
@@ -45,9 +50,15 @@ const useMarvelApi = () => {
     consumeApi(url);
   };
 
+  const consumeCharVariants = (charName) => {
+    const url = charVariantsUrl(LIMIT_PER_QUERY, queryOffset, charName);
+    consumeApi(url);
+  };
+
   return {
     consumeComics,
     consumeCharacters,
+    consumeCharVariants,
     resetData,
     dataResults,
     dataHeader,
