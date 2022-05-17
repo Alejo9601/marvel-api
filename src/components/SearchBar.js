@@ -53,6 +53,7 @@ const SearchBar = () => {
         type="text"
         name="search"
         placeholder="make a character search here..."
+        autoComplete="off"
         ref={inputRef}
       ></Input>
     </Container>
