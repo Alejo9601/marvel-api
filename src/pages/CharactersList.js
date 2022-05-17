@@ -13,6 +13,7 @@ const Characters = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-end;
+  margin-top: 20px;
 `;
 const TopBottomVisor = styled.div`
   width: 100%;

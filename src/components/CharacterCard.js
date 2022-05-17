@@ -10,6 +10,9 @@ const Card = styled(Link)`
   margin: 20px;
   overflow: hidden;
   transition: transform 0.8s ease;
+  border-radius: 5px;
+  text-decoration: none;
+  color: black;
 
   :hover {
     cursor: pointer;
@@ -19,7 +22,8 @@ const Card = styled(Link)`
   h3 {
     width: 100%;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
+    padding: 3px 0px;
   }
 `;
 
@@ -31,7 +35,7 @@ const CardImage = styled.img`
 
 const CharacterCard = ({ imgSrc, charName }) => {
   return (
-    <Card to={`/character-detail/${charName}`}>
+    <Card to={`/character-detail/${charName}`} target="_blank">
       <picture>
         <source srcSet={imgSrc} />
         <CardImage src={imgSrc} alt="comic" />
