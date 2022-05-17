@@ -6,6 +6,9 @@ const useSliderHandler = (sliderWrapper, slider) => {
 
   useEffect(() => {
     if (sliderWrapper.current && slider.current) setCount(cardsPerSlide());
+    return () => {
+      resetSliderData();
+    };
   }, []);
 
   const resetSliderData = () => {

@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import ComicCard from "./ComicCard";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import useSliderHandler from "../hooks/useSliderHandler";
 import ListOfComics from "./ListOfComics";
 
@@ -61,14 +60,10 @@ const Page = styled.p`
 const CarouselOfComics = ({ comics, getComics }) => {
   const sliderWrapper = useRef();
   const slider = useRef();
-  const { handleSlide, resetSliderData, cardsPerSlide, visibleCount } =
-    useSliderHandler(sliderWrapper, slider);
-
-  useEffect(() => {
-    if (comics.length === 18 && sliderWrapper.current && slider.current) {
-      resetSliderData();
-    }
-  }, [comics]);
+  const { handleSlide, cardsPerSlide, visibleCount } = useSliderHandler(
+    sliderWrapper,
+    slider
+  );
 
   const handleClick = (nextBtn) => {
     if (visibleCount >= comics.length - cardsPerSlide()) {
