@@ -1,9 +1,6 @@
-import { useContext, useRef } from "react";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import CharacterContent from "../context/CharacterContext";
-import { helpHttp } from "../helpers/helpHttp";
-import { characterUrlFor } from "../helpers/urlsGenerator";
 
 const Container = styled.form`
   display: flex;
@@ -46,9 +43,7 @@ const SearchBar = () => {
       const charName = inputRef.current.value;
       inputRef.current.value = "";
       document.activeElement?.blur();
-      setTimeout(() => {
-        navigate(`/character-search/${charName}`);
-      }, 1000);
+      navigate(`/character-search/${charName}`);
     }
   };
 
