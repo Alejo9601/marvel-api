@@ -38,7 +38,7 @@ const CardImage = styled.img`
 
 const CharacterCard = ({ imgSrc, charName }) => {
   return (
-    <Card to={`/character-detail/${charName}`} target="_blank">
+    <Card to={`/character-detail/${charName}`}>
       <picture>
         <source srcSet={imgSrc} />
         <CardImage src={imgSrc} alt="comic" />

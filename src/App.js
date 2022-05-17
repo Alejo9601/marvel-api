@@ -13,6 +13,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<CharacterList />} />
+            <Route path="*" element={<h1>NOT FOUND - 404</h1>} />
             <Route path="/marvel-characters" element={<CharacterList />} />
             <Route
               path="/character-search/:charName"
@@ -22,7 +23,6 @@ function App() {
               path="/character-detail/:charName"
               element={<CharacterDetail />}
             />
-            <Route path="*" element={<h1>NOT FOUND - 404</h1>} />
           </Routes>
         </BrowserRouter>
       </HeroProvider>
