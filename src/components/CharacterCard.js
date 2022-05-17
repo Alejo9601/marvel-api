@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import TrimText from "../helpers/TrimText";
 
 const Card = styled(Link)`
   min-width: 250px;
@@ -40,7 +41,7 @@ const CharacterCard = ({ imgSrc, charName }) => {
         <source srcSet={imgSrc} />
         <CardImage src={imgSrc} alt="comic" />
       </picture>
-      <h3>{charName}</h3>
+      <h3>{TrimText(charName, 23)}</h3>
     </Card>
   );
 };
