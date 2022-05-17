@@ -15,7 +15,7 @@ const Characters = styled.section`
 
 const CharVariantsList = () => {
   const { charName } = useParams();
-  const { charVariants, getCharVariants } = useCharVariants(
+  const { charVariants } = useCharVariants(
     charName !== undefined ? charName : ""
   );
 

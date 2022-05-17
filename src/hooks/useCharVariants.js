@@ -22,7 +22,7 @@ const useCharVariants = (charName) => {
     };
   }, [charName]);
 
-  return { charVariants, getCharVariants };
+  return { charVariants };
 };
 
 export default useCharVariants;
