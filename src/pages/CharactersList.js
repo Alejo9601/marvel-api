@@ -14,16 +14,6 @@ const Characters = styled.section`
   justify-content: center;
   align-items: flex-end;
 `;
-const Button = styled.div`
-  cursor: pointer;
-  background-color: lightblue;
-  color: white;
-  width: 100%;
-  height: fit-content;
-  text-align: center;
-  font-size: 2rem;
-  margin-top: 20px;
-`;
 const TopBottomVisor = styled.div`
   width: 100%;
   text-align: center;
@@ -52,7 +42,7 @@ const CharacterList = () => {
         getNewCharacters();
       }
     });
-  }, [entries]);
+  }, [observer, entries]);
 
   return (
     <Characters>

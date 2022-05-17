@@ -6,12 +6,12 @@ import {
   comicsUrlFor,
 } from "../helpers/urlsGenerator";
 
-const useMarvelApi = () => {
+const useMarvelApi = (limitPerQuery) => {
   const [dataResults, setDataResults] = useState([]);
   const [dataHeader, setDataHeader] = useState({});
   const [queryOffset, setQueryOffset] = useState(0);
   //This can be a state, each component should be able to choose this param
-  const LIMIT_PER_QUERY = 18;
+  const [LIMIT_PER_QUERY, serLimitPerQuery] = useState(limitPerQuery || 18);
 
   const updateQueryOffset = () => {
     setQueryOffset((prevOffset) => prevOffset + LIMIT_PER_QUERY);

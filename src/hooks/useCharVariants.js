@@ -1,14 +1,15 @@
 import { useEffect } from "react";
-import { charVariantsUrl } from "../helpers/urlsGenerator";
 import useMarvelApi from "./useMarvelApi";
 
 const useCharVariants = (charName) => {
+  const VARIANT_LIMIT = 100;
+
   const {
     consumeCharVariants,
     resetData,
     dataResults: charVariants,
     dataHeader: charVariantsHeader,
-  } = useMarvelApi();
+  } = useMarvelApi(VARIANT_LIMIT);
 
   const getCharVariants = () => {
     consumeCharVariants(charName);
