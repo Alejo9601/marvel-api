@@ -20,7 +20,7 @@ const useCharVariants = (charName) => {
     return () => {
       resetData();
     };
-  }, []);
+  }, [charName]);
 
   return { charVariants, getCharVariants };
 };

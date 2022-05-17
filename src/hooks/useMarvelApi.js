@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { helpHttp } from "../helpers/helpHttp";
 import {
   charactersUrl,
@@ -9,12 +9,12 @@ import {
 const useMarvelApi = (limitPerQuery) => {
   const [dataResults, setDataResults] = useState([]);
   const [dataHeader, setDataHeader] = useState({});
-  const [queryOffset, setQueryOffset] = useState(0);
+  const queryOffset = useRef(0);
   //This can be a state, each component should be able to choose this param
   const [LIMIT_PER_QUERY, serLimitPerQuery] = useState(limitPerQuery || 18);
 
   const updateQueryOffset = () => {
-    setQueryOffset((prevOffset) => prevOffset + LIMIT_PER_QUERY);
+    queryOffset.current = queryOffset.current + LIMIT_PER_QUERY;
   };
 
   const appendNewResults = (newResults) => {
@@ -26,7 +26,7 @@ const useMarvelApi = (limitPerQuery) => {
   const resetData = () => {
     setDataHeader({});
     setDataResults([]);
-    setQueryOffset(0);
+    queryOffset.current = 0;
   };
 
   const consumeApi = (url) => {
@@ -41,17 +41,17 @@ const useMarvelApi = (limitPerQuery) => {
   };
 
   const consumeComics = (charId) => {
-    const url = comicsUrlFor(charId, LIMIT_PER_QUERY, queryOffset);
+    const url = comicsUrlFor(charId, LIMIT_PER_QUERY, queryOffset.current);
     consumeApi(url);
   };
 
   const consumeCharacters = () => {
-    const url = charactersUrl(LIMIT_PER_QUERY, queryOffset);
+    const url = charactersUrl(LIMIT_PER_QUERY, queryOffset.current);
     consumeApi(url);
   };
 
   const consumeCharVariants = (charName) => {
-    const url = charVariantsUrl(LIMIT_PER_QUERY, queryOffset, charName);
+    const url = charVariantsUrl(LIMIT_PER_QUERY, queryOffset.current, charName);
     consumeApi(url);
   };
 
