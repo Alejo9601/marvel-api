@@ -18,6 +18,8 @@ const Card = styled(Link)`
   :hover {
     cursor: pointer;
     transform: scale(1.05);
+    background-color: #2155cd;
+    color: white;
   }
 
   h3 {
