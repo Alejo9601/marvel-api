@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef } from "react";
 import styled from "styled-components";
 import ListOfCharacters from "../components/ListOfCharacters";
-import useGetCharacters from "../hooks/useGetCharacters";
+import useCharacters from "../hooks/useCharacters";
 import useObserver from "../hooks/useObserver";
 import debounce from "just-debounce-it";
 import Loader from "../components/Loader";
@@ -32,7 +32,7 @@ const TopBottomVisor = styled.div`
 `;
 
 const CharacterList = () => {
-  const { characters, getCharacters } = useGetCharacters();
+  const { characters, getCharacters } = useCharacters();
   const toObserve = useRef();
   const [observer, setElements, entries] = useObserver({
     rootMargin: "500px", // half of item height
