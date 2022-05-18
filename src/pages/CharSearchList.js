@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import ListOfCharacters from "../components/ListOfCharacters";
-import useCharVariants from "../hooks/useCharVariants";
+import useCharSearcher from "../hooks/useCharSearcher";
 import { useParams } from "react-router-dom";
 
-const CharVariantsSection = styled.section`
+const CharSearchSection = styled.section`
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -20,16 +20,16 @@ const Wrapper = styled.div`
 
 const CharVariantsList = () => {
   const { charName } = useParams();
-  const { charVariants } = useCharVariants(
+  const { charsSearched } = useCharSearcher(
     charName !== undefined ? charName : ""
   );
 
   return (
-    <CharVariantsSection>
+    <CharSearchSection>
       <Wrapper>
-        <ListOfCharacters characters={charVariants} />
+        <ListOfCharacters characters={charsSearched} />
       </Wrapper>
-    </CharVariantsSection>
+    </CharSearchSection>
   );
 };
 

@@ -3,7 +3,7 @@ import CharacterDetail from "./pages/CharacterDetail";
 import { HeroProvider } from "./context/CharacterContext";
 import CharacterList from "./pages/CharactersList";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import CharVariantsList from "./pages/CharVariantsList";
+import CharSearchList from "./pages/CharSearchList";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
             <Route path="/marvel-characters" element={<CharacterList />} />
             <Route
               path="/character-search/:charName"
-              element={<CharVariantsList />}
+              element={<CharSearchList />}
             />
             <Route
               path="/character-detail/:charName"

@@ -50,7 +50,7 @@ const useMarvelApi = (limitPerQuery) => {
     consumeApi(url);
   };
 
-  const consumeCharVariants = (charName) => {
+  const consumeSearch = (charName) => {
     const url = charVariantsUrl(LIMIT_PER_QUERY, queryOffset.current, charName);
     consumeApi(url);
   };
@@ -58,7 +58,7 @@ const useMarvelApi = (limitPerQuery) => {
   return {
     consumeComics,
     consumeCharacters,
-    consumeCharVariants,
+    consumeSearch,
     resetData,
     dataResults,
     dataHeader,
