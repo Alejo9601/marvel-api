@@ -57,7 +57,7 @@ const Page = styled.p`
   }
 `;
 
-const CarouselOfComics = ({ comics, getComics }) => {
+const CarouselOfComics = ({ comics, totalComics, getComics }) => {
   const sliderWrapper = useRef();
   const slider = useRef();
   const { handleSlide, cardsPerSlide, visibleCount } = useSliderHandler(
@@ -66,10 +66,15 @@ const CarouselOfComics = ({ comics, getComics }) => {
   );
 
   const handleClick = (nextBtn) => {
-    if (visibleCount >= comics.length - cardsPerSlide()) {
-      getComics();
+    if (nextBtn && visibleCount < totalComics) {
+      const sliderEdge = comics.length - cardsPerSlide();
+      if (visibleCount >= sliderEdge) {
+        getComics();
+      }
+      handleSlide(true);
+    } else if (nextBtn === false) {
+      handleSlide(false);
     }
-    handleSlide(nextBtn);
   };
 
   return (
