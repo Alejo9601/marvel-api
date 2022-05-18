@@ -3,14 +3,19 @@ import ListOfCharacters from "../components/ListOfCharacters";
 import useCharVariants from "../hooks/useCharVariants";
 import { useParams } from "react-router-dom";
 
-const Characters = styled.section`
+const CharVariantsSection = styled.section`
   min-height: 100vh;
-  max-width: 900px;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
   margin-top: 20px;
+  justify-content: center;
+`;
+const Wrapper = styled.div`
+  height: fit-content;
+  display: flex;
+  max-width: 900px;
+  flex-wrap: wrap;
+  align-items: flex-start;
 `;
 
 const CharVariantsList = () => {
@@ -20,9 +25,11 @@ const CharVariantsList = () => {
   );
 
   return (
-    <Characters>
-      <ListOfCharacters characters={charVariants} />
-    </Characters>
+    <CharVariantsSection>
+      <Wrapper>
+        <ListOfCharacters characters={charVariants} />
+      </Wrapper>
+    </CharVariantsSection>
   );
 };
 
