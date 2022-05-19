@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import { helpHttp } from "../helpers/helpHttp";
-import { charactersUrl } from "../helpers/urlsGenerator";
+import { useEffect } from "react";
 import useMarvelApi from "./useMarvelApi";
 
 const useCharacters = () => {
