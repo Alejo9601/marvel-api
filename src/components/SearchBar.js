@@ -50,12 +50,14 @@ const SearchBar = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (inputRef.current.value !== "") {
-      const charName = inputRef.current.value;
-      inputRef.current.value = "";
-      document.activeElement?.blur();
-      navigate(`/character-search/${charName}`);
+    const toSearch = inputRef.current.value;
+    if (toSearch === "" || toSearch.length < 2) {
+      alert("Please insert more than two (2) characters to search");
+      return;
     }
+    inputRef.current.value = "";
+    document.activeElement?.blur();
+    navigate(`/character-search/${toSearch}`);
   };
 
   return (
