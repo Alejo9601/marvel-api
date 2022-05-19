@@ -16,7 +16,7 @@ const NavMenu = () => {
   return (
     <StyledNav>
       <StyledUl>
-        <MenuLink textValue="Characters" refTo="/marvel-characters" />
+        <MenuLink textValue="All Characters" refTo="/marvel-characters" />
         <MenuLink
           textValue="Creator's WEB"
           refTo="https://juarezdev.vercel.app"
