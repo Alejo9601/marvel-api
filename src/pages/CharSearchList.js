@@ -2,13 +2,16 @@ import styled from "styled-components";
 import ListOfCharacters from "../components/ListOfCharacters";
 import useCharSearcher from "../hooks/useCharSearcher";
 import { useParams } from "react-router-dom";
+import Visor from "../components/Visor";
 
 const CharSearchSection = styled.section`
   min-height: 100vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   margin-top: 20px;
   justify-content: center;
+  align-items: center;
 `;
 const Wrapper = styled.div`
   height: fit-content;
@@ -20,7 +23,7 @@ const Wrapper = styled.div`
 
 const CharVariantsList = () => {
   const { charName } = useParams();
-  const { charsSearched } = useCharSearcher(
+  const { charsSearched, searchChars } = useCharSearcher(
     charName !== undefined ? charName : ""
   );
 
@@ -29,6 +32,7 @@ const CharVariantsList = () => {
       <Wrapper>
         <ListOfCharacters characters={charsSearched} />
       </Wrapper>
+      <Visor toDoWhenReached={searchChars} />
     </CharSearchSection>
   );
 };

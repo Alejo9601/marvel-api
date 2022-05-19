@@ -1,10 +1,9 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback } from "react";
 import styled from "styled-components";
 import ListOfCharacters from "../components/ListOfCharacters";
 import useCharacters from "../hooks/useCharacters";
-import useObserver from "../hooks/useObserver";
 import debounce from "just-debounce-it";
-import Loader from "../components/Loader";
+import Visor from "../components/Visor";
 
 const Characters = styled.section`
   min-height: 100vh;
@@ -15,42 +14,18 @@ const Characters = styled.section`
   align-items: flex-end;
   margin-top: 20px;
 `;
-const TopBottomVisor = styled.div`
-  width: 100%;
-  text-align: center;
-  background-color: blue;
-  position: absolute;
-`;
 
 const CharacterList = () => {
   const { characters, getCharacters } = useCharacters();
-  const toObserve = useRef();
-  const [observer, setElements, entries] = useObserver({
-    rootMargin: "500px", // half of item height
-    root: null, // default, use viewport
-  });
 
-  const getNewCharacters = useCallback(debounce(getCharacters, 500), [entries]);
-
-  useEffect(() => {
-    const elements = [toObserve.current];
-    setElements(elements);
-  }, []);
-
-  useEffect(() => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        getNewCharacters();
-      }
-    });
-  }, [observer, entries]);
+  const getNewCharacters = useCallback(debounce(getCharacters, 500), [
+    characters,
+  ]);
 
   return (
     <Characters>
       <ListOfCharacters characters={characters} />
-      <TopBottomVisor ref={toObserve}>
-        <Loader />
-      </TopBottomVisor>
+      <Visor toDoWhenReached={getNewCharacters} />
     </Characters>
   );
 };

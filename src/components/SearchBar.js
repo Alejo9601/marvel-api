@@ -51,7 +51,7 @@ const SearchBar = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const toSearch = inputRef.current.value;
-    if (toSearch === "" || toSearch.length < 2) {
+    if (toSearch === "") {
       alert("Please insert more than two (2) characters to search");
       return;
     }
