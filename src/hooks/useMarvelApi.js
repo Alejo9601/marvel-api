@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { helpHttp } from "../helpers/helpHttp";
 import {
   charactersUrl,
-  charVariantsUrl,
+  charSearchUrl,
   comicsUrlFor,
 } from "../helpers/urlsGenerator";
 
@@ -51,7 +51,7 @@ const useMarvelApi = (limitPerQuery) => {
   };
 
   const consumeSearch = (charName) => {
-    const url = charVariantsUrl(LIMIT_PER_QUERY, queryOffset.current, charName);
+    const url = charSearchUrl(LIMIT_PER_QUERY, queryOffset.current, charName);
     consumeApi(url);
   };
 
