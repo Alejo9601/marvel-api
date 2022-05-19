@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import TrimText from "../helpers/TrimText";
+import onError from "../assets/img/img_not_found.jpg";
 
 const Card = styled(Link)`
   min-width: 250px;
