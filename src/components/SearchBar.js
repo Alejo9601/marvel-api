@@ -5,18 +5,19 @@ import styled from "styled-components";
 const Container = styled.form`
   display: flex;
   align-items: center;
+  background-color: white;
+  border-radius: 3px;
 
   @media (max-width: 550px) {
     padding-bottom: 20px;
   }
 `;
 
-const Input = styled.input`
-  background-color: white;
+const InputSearch = styled.input`
   height: 30px;
   border-radius: 4px;
   border: 0px;
-  width: 400px;
+  width: 350px;
   text-align: center;
   font-size: 1.6rem;
   outline: none;
@@ -28,9 +29,19 @@ const Input = styled.input`
   }
 
   @media (max-width: 550px) {
-    width: 360px;
+    width: 350px;
     height: 50px;
   }
+`;
+const InputButton = styled.input`
+  background-color: lightgray;
+  color: black;
+  height: 30px;
+  padding: 0px 10px;
+  border: 0px;
+  cursor: pointer;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
 `;
 
 const SearchBar = () => {
@@ -49,13 +60,14 @@ const SearchBar = () => {
 
   return (
     <Container onSubmit={handleSubmit}>
-      <Input
-        type="text"
+      <InputSearch
+        type="search"
         name="search"
         placeholder="make a character search here..."
         autoComplete="off"
         ref={inputRef}
-      ></Input>
+      ></InputSearch>
+      <InputButton type="submit" name="button" value="Search" />
     </Container>
   );
 };
