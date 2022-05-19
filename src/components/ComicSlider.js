@@ -14,6 +14,7 @@ const SectionSlider = styled.section`
   position: relative;
   /* background-color: beige; */
   align-self: start;
+  margin-top: 10px;
 `;
 const SectionWrapper = styled.div`
   display: flex;

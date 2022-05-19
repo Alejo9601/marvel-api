@@ -7,7 +7,8 @@ const SectionDescription = styled.section`
   width: 100%;
   height: fit-content;
   /* background-color: gray; */
-  align-self: center;
+  align-self: end;
+  margin-bottom: 10px;
 `;
 const Description = styled.div`
   display: flex;
