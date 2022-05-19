@@ -2,24 +2,25 @@ import { useEffect, useState, useRef } from "react";
 
 const useSliderHandler = (sliderWrapper, slider) => {
   const [count, setCount] = useState(0);
-  const sliderPosition = useRef();
+  const sliderPosition = useRef(0);
 
   useEffect(() => {
     if (sliderWrapper.current && slider.current) setCount(cardsPerSlide());
-    return () => {
-      resetSliderData();
-    };
+    // return () => {
+    //   console.log("Me desmonte");
+    //   slideToStart();
+    // };
   }, []);
 
-  const resetSliderData = () => {
-    slideToStart();
-    setCount(cardsPerSlide());
-  };
+  // const resetSliderData = () => {
+  //   slideToStart();
+  //   setCount(cardsPerSlide());
+  // };
 
-  const slideToStart = () => {
-    slider.current.style.transform = `translate(0)`;
-    sliderPosition.current = 0;
-  };
+  // const slideToStart = () => {
+  //   slider.current.style.transform = `translate(0)`;
+  //   sliderPosition.current = 0;
+  // };
 
   const slide = (step, next) => {
     slider.current.style.transform = `translate(${
@@ -49,7 +50,7 @@ const useSliderHandler = (sliderWrapper, slider) => {
     }
   };
 
-  return { handleSlide, resetSliderData, cardsPerSlide, visibleCount: count };
+  return { handleSlide, cardsPerSlide, count };
 };
 
 export default useSliderHandler;

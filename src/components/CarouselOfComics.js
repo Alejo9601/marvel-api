@@ -60,10 +60,11 @@ const Page = styled.p`
 const CarouselOfComics = ({ comics, totalComics, getComics }) => {
   const sliderWrapper = useRef();
   const slider = useRef();
-  const { handleSlide, cardsPerSlide, visibleCount } = useSliderHandler(
-    sliderWrapper,
-    slider
-  );
+  const {
+    handleSlide,
+    cardsPerSlide,
+    count: visibleCount,
+  } = useSliderHandler(sliderWrapper, slider);
 
   const handleClick = (nextBtn) => {
     if (nextBtn && visibleCount < totalComics) {
