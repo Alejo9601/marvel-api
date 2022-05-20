@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import useSliderHandler from "../hooks/useSliderHandler";
 import ListOfComics from "./ListOfComics";
 
@@ -47,15 +47,15 @@ const Slider = styled.div`
   padding: 0;
   /* background-color: beige; */
 `;
-const Page = styled.p`
-  font-size: 2rem;
-  width: 100%;
-  text-align: center;
+// const Page = styled.p`
+//   font-size: 2rem;
+//   width: 100%;
+//   text-align: center;
 
-  @media (max-width: 1366px) {
-    margin-bottom: 65px;
-  }
-`;
+//   @media (max-width: 1366px) {
+//     margin-bottom: 65px;
+//   }
+// `;
 
 const CarouselOfComics = ({ comics, totalComics, getComics }) => {
   const sliderWrapper = useRef();
@@ -87,9 +87,7 @@ const CarouselOfComics = ({ comics, totalComics, getComics }) => {
         </Slider>
       </SliderWrapper>
       <ButtonSlider onClick={() => handleClick(true)}>{`>`}</ButtonSlider>
-      <Page>
-        {visibleCount} of {comics.length} retrieved
-      </Page>
+      {/* <Page>{visibleCount}</Page> */}
     </>
   );
 };
