@@ -13,5 +13,5 @@ export const charactersUrl = (limit, offset) => {
 };
 
 export const charSearchUrl = (limit, offset, charName) => {
-  return `${sURL.baseUrl}?limit=${limit}&offset=${offset}&orderBy=-modified&nameStartsWith=${charName}&${sURL.ts}&${sURL.publicKey}&${sURL.md5Hash}`;
+  return `${sURL.baseUrl}?limit=${limit}&offset=${offset}&nameStartsWith=${charName}&${sURL.ts}&${sURL.publicKey}&${sURL.md5Hash}`;
 };
