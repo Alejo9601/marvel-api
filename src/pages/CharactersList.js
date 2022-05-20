@@ -25,7 +25,9 @@ const CharacterList = () => {
   return (
     <Characters>
       <ListOfCharacters characters={characters} />
-      <Visor toDoWhenReached={getNewCharacters} />
+      {characters.length < charsHeader.total ? (
+        <Visor toDoWhenReached={getNewCharacters} />
+      ) : null}
     </Characters>
   );
 };
