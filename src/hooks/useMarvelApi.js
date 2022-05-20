@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import { helpHttp } from "../helpers/helpHttp";
-import { removeDuplicated } from "../helpers/removeDuplicated";
 import {
   charactersUrl,
   charSearchUrl,
