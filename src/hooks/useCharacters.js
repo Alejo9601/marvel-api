@@ -20,7 +20,7 @@ const useCharacters = () => {
     };
   }, []);
 
-  return { characters, getCharacters };
+  return { characters, charsHeader, getCharacters };
 };
 
 export default useCharacters;

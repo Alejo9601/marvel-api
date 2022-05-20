@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 
 const CharVariantsList = () => {
   const { charName } = useParams();
-  const { charsSearched, searchChars } = useCharSearcher(
+  const { charsSearched, charsSearchHeader, searchChars } = useCharSearcher(
     charName !== undefined ? charName : ""
   );
 

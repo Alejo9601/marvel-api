@@ -16,7 +16,7 @@ const Characters = styled.section`
 `;
 
 const CharacterList = () => {
-  const { characters, getCharacters } = useCharacters();
+  const { characters, charsHeader, getCharacters } = useCharacters();
 
   const getNewCharacters = useCallback(debounce(getCharacters, 500), [
     characters,

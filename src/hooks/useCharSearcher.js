@@ -20,7 +20,7 @@ const useCharSearcher = (charName) => {
     };
   }, [charName]);
 
-  return { charsSearched, searchChars };
+  return { charsSearched, charsSearchHeader, searchChars };
 };
 
 export default useCharSearcher;
