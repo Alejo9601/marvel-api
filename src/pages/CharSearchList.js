@@ -14,7 +14,7 @@ const CharSearchSection = styled.section`
   align-items: center;
 `;
 const Wrapper = styled.div`
-  height: fit-content;
+  min-height: 100vh;
   display: flex;
   max-width: 900px;
   flex-wrap: wrap;
