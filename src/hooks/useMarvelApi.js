@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { helpHttp } from "../helpers/helpHttp";
+import { removeDuplicated } from "../helpers/removeDuplicated";
 import {
   charactersUrl,
   charSearchUrl,
@@ -30,7 +31,6 @@ const useMarvelApi = (limitPerQuery) => {
   };
 
   const consumeApi = (url) => {
-    console.log(url);
     helpHttp()
       .get(url)
       .then((res) => {
