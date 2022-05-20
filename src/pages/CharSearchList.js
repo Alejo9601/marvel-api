@@ -9,7 +9,7 @@ const CharSearchSection = styled.section`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
+  margin: 20px 0px;
   justify-content: center;
   align-items: center;
 `;
@@ -32,7 +32,9 @@ const CharVariantsList = () => {
       <Wrapper>
         <ListOfCharacters characters={charsSearched} />
       </Wrapper>
-      <Visor toDoWhenReached={searchChars} />
+      {charsSearched.length < charsSearchHeader.total ? (
+        <Visor toDoWhenReached={searchChars} />
+      ) : null}
     </CharSearchSection>
   );
 };
