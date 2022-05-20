@@ -33,6 +33,7 @@ const Visor = ({ toDoWhenReached }) => {
   return (
     <TopBottomVisor ref={toObserve}>
       <Loader />
+      <h1>VISOR</h1>
     </TopBottomVisor>
   );
 };
