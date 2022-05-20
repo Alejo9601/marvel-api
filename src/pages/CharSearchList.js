@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import Visor from "../components/Visor";
 
 const CharSearchSection = styled.section`
-  min-height: 100vh;
+  flex: 1;
   width: 100%;
   display: flex;
   flex-direction: column;

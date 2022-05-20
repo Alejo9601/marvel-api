@@ -9,11 +9,10 @@ import ComicSlider from "../components/ComicSlider";
 import { useParams } from "react-router-dom";
 
 const GridContainer = styled.section`
-  height: 100%;
+  flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1.5fr;
-  flex-grow: 1;
 
   @media (max-width: 1366px) {
     grid-template-columns: 1fr;

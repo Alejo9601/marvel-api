@@ -6,7 +6,7 @@ import debounce from "just-debounce-it";
 import Visor from "../components/Visor";
 
 const Characters = styled.section`
-  min-height: 100vh;
+  flex: 1;
   max-width: 900px;
   display: flex;
   flex-wrap: wrap;

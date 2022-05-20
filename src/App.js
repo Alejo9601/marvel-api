@@ -4,10 +4,22 @@ import { HeroProvider } from "./context/CharacterContext";
 import CharacterList from "./pages/CharactersList";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CharSearchList from "./pages/CharSearchList";
+import styled from "styled-components";
+
+const Application = styled.div`
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  /* background-color: beige; */
+`;
 
 function App() {
   return (
-    <div className="App">
+    <Application>
       <HeroProvider>
         <BrowserRouter>
           <Header />
@@ -26,7 +38,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </HeroProvider>
-    </div>
+    </Application>
   );
 }
 
