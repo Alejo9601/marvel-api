@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import TrimText from "../helpers/TrimText";
+import { trimText } from "../helpers/trimText";
 import onError from "../assets/img/img_not_found.jpg";
 
 const Card = styled(Link)`
@@ -44,7 +44,7 @@ const CharacterCard = ({ imgSrc, charName }) => {
         <source srcSet={imgSrc} />
         <CardImage src={imgSrc} alt="comic" />
       </picture>
-      <h3>{TrimText(charName, 23)}</h3>
+      <h3>{trimText(charName, 23)}</h3>
     </Card>
   );
 };
