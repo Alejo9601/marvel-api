@@ -8,8 +8,8 @@ const Container = styled.form`
   background-color: white;
   border-radius: 3px;
 
-  @media (max-width: 550px) {
-    padding-bottom: 20px;
+  @media (max-width: 1366px) {
+    margin: 15px 0px;
   }
 `;
 
@@ -29,7 +29,7 @@ const InputSearch = styled.input`
   }
 
   @media (max-width: 550px) {
-    width: 350px;
+    width: 345px;
     height: 50px;
   }
 `;
@@ -42,6 +42,10 @@ const InputButton = styled.input`
   cursor: pointer;
   border-top-right-radius: inherit;
   border-bottom-right-radius: inherit;
+
+  @media (max-width: 550px) {
+    height: 50px;
+  }
 `;
 
 const SearchBar = () => {
