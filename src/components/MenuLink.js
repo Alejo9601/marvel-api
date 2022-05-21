@@ -6,6 +6,7 @@ const StyledLi = styled.li`
     display: inline-block;
     color: white;
     font-size: 1.8rem;
+    text-align: center;
     text-decoration: none;
     padding: 10px 25px 10px 25px;
   }
