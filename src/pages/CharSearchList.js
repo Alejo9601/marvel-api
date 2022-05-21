@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   display: flex;
   max-width: 900px;
   flex-wrap: wrap;
-  align-items: flex-start;
+  justify-content: center;
 `;
 
 const CharVariantsList = () => {
