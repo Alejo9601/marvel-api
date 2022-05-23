@@ -13,11 +13,10 @@ const CharSearchSection = styled.section`
   display: flex;
   flex-direction: column;
   margin: 20px 0px;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `;
 const Wrapper = styled.div`
-  min-height: 100vh;
   display: flex;
   max-width: 900px;
   flex-wrap: wrap;
