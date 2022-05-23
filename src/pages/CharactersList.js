@@ -1,9 +1,11 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import ListOfCharacters from "../components/ListOfCharacters";
 import useCharacters from "../hooks/useCharacters";
 import debounce from "just-debounce-it";
 import Visor from "../components/Visor";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 const Characters = styled.section`
   flex: 1;
@@ -22,9 +24,23 @@ const CharacterList = () => {
     characters,
   ]);
 
+  const [displayMsg, setDisplayMsg] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      characters.length === 0 ? setDisplayMsg(true) : setDisplayMsg(false);
+    }, 1500);
+  }, [characters]);
+
   return (
     <Characters>
-      <ListOfCharacters characters={characters} />
+      {characters.length !== 0 ? (
+        <ListOfCharacters characters={characters} />
+      ) : displayMsg ? (
+        <Message msg="AN ERROR OCURRED... PLEASE CHECK YOUR INTERNET CONNECTION" />
+      ) : (
+        <Loader />
+      )}
       {characters.length < charsHeader.total ? (
         <Visor toDoWhenReached={getNewCharacters} />
       ) : null}
