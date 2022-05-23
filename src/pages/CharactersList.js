@@ -29,7 +29,7 @@ const CharacterList = () => {
   useEffect(() => {
     setTimeout(() => {
       characters.length === 0 ? setDisplayMsg(true) : setDisplayMsg(false);
-    }, 1500);
+    }, 3000);
   }, [characters]);
 
   return (

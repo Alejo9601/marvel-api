@@ -33,7 +33,7 @@ const CharVariantsList = () => {
   useEffect(() => {
     setTimeout(() => {
       charsSearched.length === 0 ? setDisplayMsg(true) : setDisplayMsg(false);
-    }, 800);
+    }, 3000);
   }, [charsSearched]);
 
   return (
