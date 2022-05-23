@@ -16,7 +16,7 @@ const useCharComics = () => {
   };
 
   useEffect(() => {
-    if (refId) {
+    if (refId !== null) {
       getComics();
     }
     return () => {
