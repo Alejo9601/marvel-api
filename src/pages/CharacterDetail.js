@@ -12,7 +12,7 @@ const GridContainer = styled.section`
   flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1.5fr;
+  grid-template-rows: 1fr 1.2fr;
 
   @media (max-width: 1366px) {
     grid-template-columns: 1fr;
