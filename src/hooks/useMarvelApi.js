@@ -12,6 +12,7 @@ const useMarvelApi = (limitPerQuery) => {
   const queryOffset = useRef(0);
   //This can be a state, each component should be able to choose this param
   const [LIMIT_PER_QUERY, serLimitPerQuery] = useState(limitPerQuery || 18);
+  const [loading, setLoading] = useState(true);
 
   const updateQueryOffset = () => {
     queryOffset.current = queryOffset.current + LIMIT_PER_QUERY;
@@ -30,12 +31,14 @@ const useMarvelApi = (limitPerQuery) => {
   };
 
   const consumeApi = (url) => {
+    setLoading(true);
     helpHttp()
       .get(url)
       .then((res) => {
         appendNewResults(res.data.results);
         setDataHeader({ total: res.data.total, count: res.data.count });
         updateQueryOffset();
+        setLoading(false);
       });
   };
 
@@ -59,6 +62,7 @@ const useMarvelApi = (limitPerQuery) => {
     consumeCharacters,
     consumeSearch,
     resetData,
+    loading,
     dataResults,
     dataHeader,
   };

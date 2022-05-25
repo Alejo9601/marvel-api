@@ -5,6 +5,7 @@ const useCharSearcher = (charName) => {
   const {
     consumeSearch,
     resetData,
+    loading,
     dataResults: charsSearched,
     dataHeader: charsSearchHeader,
   } = useMarvelApi();
@@ -20,7 +21,7 @@ const useCharSearcher = (charName) => {
     };
   }, [charName]);
 
-  return { charsSearched, charsSearchHeader, searchChars };
+  return { charsSearched, charsSearchHeader, searchChars, loading };
 };
 
 export default useCharSearcher;

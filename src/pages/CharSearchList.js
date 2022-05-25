@@ -25,23 +25,15 @@ const Wrapper = styled.div`
 
 const CharVariantsList = () => {
   const { charName } = useParams();
-  const { charsSearched, charsSearchHeader, searchChars } = useCharSearcher(
-    charName !== undefined ? charName : ""
-  );
-  const [displayMsg, setDisplayMsg] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      charsSearched.length === 0 ? setDisplayMsg(true) : setDisplayMsg(false);
-    }, 3000);
-  }, [charsSearched]);
+  const { charsSearched, charsSearchHeader, searchChars, loading } =
+    useCharSearcher(charName !== undefined ? charName : "");
 
   return (
     <CharSearchSection>
       <Wrapper>
         {charsSearched.length !== 0 ? (
           <ListOfCharacters characters={charsSearched} />
-        ) : displayMsg ? (
+        ) : loading === false ? (
           <Message msg="THERE'S NOT A CHARACTER RELATED TO YOUR SEARCH" />
         ) : (
           <Loader />

@@ -5,6 +5,7 @@ const useCharacters = () => {
   const {
     consumeCharacters,
     resetData,
+    loading,
     dataResults: characters,
     dataHeader: charsHeader,
   } = useMarvelApi();
@@ -20,7 +21,7 @@ const useCharacters = () => {
     };
   }, []);
 
-  return { characters, charsHeader, getCharacters };
+  return { characters, charsHeader, getCharacters, loading };
 };
 
 export default useCharacters;

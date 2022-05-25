@@ -18,25 +18,17 @@ const Characters = styled.section`
 `;
 
 const CharacterList = () => {
-  const { characters, charsHeader, getCharacters } = useCharacters();
+  const { characters, charsHeader, getCharacters, loading } = useCharacters();
 
   const getNewCharacters = useCallback(debounce(getCharacters, 500), [
     characters,
   ]);
 
-  const [displayMsg, setDisplayMsg] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      characters.length === 0 ? setDisplayMsg(true) : setDisplayMsg(false);
-    }, 3000);
-  }, [characters]);
-
   return (
     <Characters>
       {characters.length !== 0 ? (
         <ListOfCharacters characters={characters} />
-      ) : displayMsg ? (
+      ) : loading === false ? (
         <Message msg="AN ERROR OCURRED... PLEASE CHECK YOUR INTERNET CONNECTION" />
       ) : (
         <Loader />

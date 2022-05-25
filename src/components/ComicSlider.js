@@ -4,6 +4,7 @@ import Loader from "./Loader";
 import useCharComics from "../hooks/useCharComics";
 import { useContext, useEffect } from "react";
 import CarouselOfComics from "./CarouselOfComics";
+import Message from "./Message";
 
 const SectionSlider = styled.section`
   display: flex;
@@ -59,8 +60,10 @@ const ComicSlider = () => {
             getComics={getComics}
           />
         </SectionWrapper>
-      ) : (
+      ) : totalComics !== 0 ? (
         <Loader />
+      ) : (
+        <Message msg="This character has no comics" />
       )}
     </SectionSlider>
   );
