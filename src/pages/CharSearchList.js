@@ -17,10 +17,14 @@ const CharSearchSection = styled.section`
   align-items: center;
 `;
 const Wrapper = styled.div`
+  flex: 1;
+  min-width: 900px;
   display: flex;
   max-width: 900px;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  position: relative;
 `;
 
 const CharVariantsList = () => {

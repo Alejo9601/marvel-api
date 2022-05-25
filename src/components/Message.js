@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const Container = styled.div`
   position: absolute;
-  top: 45%;
-  left: 30%;
+  top: 40%;
+  left: 20%;
   background-color: #ff4040;
   padding: 20px;
 
