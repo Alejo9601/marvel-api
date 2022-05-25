@@ -15,16 +15,15 @@ const CharSearchSection = styled.section`
   margin: 20px 0px;
   justify-content: flex-start;
   align-items: center;
+  position: relative;
 `;
 const Wrapper = styled.div`
   flex: 1;
-  min-width: 900px;
   display: flex;
   max-width: 900px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  position: relative;
 `;
 
 const CharVariantsList = () => {
@@ -34,15 +33,16 @@ const CharVariantsList = () => {
 
   return (
     <CharSearchSection>
-      <Wrapper>
-        {charsSearched.length !== 0 ? (
+      {charsSearched.length !== 0 ? (
+        <Wrapper>
           <ListOfCharacters characters={charsSearched} />
-        ) : loading === false ? (
-          <Message msg="THERE'S NOT A CHARACTER RELATED TO YOUR SEARCH" />
-        ) : (
-          <Loader />
-        )}
-      </Wrapper>
+        </Wrapper>
+      ) : loading === false ? (
+        <Message msg="THERE'S NOT A CHARACTER RELATED TO YOUR SEARCH" />
+      ) : (
+        <Loader />
+      )}
+
       {charsSearched.length < charsSearchHeader.total ? (
         <Visor toDoWhenReached={searchChars} />
       ) : null}

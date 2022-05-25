@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Container = styled.div`
   position: absolute;
   top: 40%;
-  left: 20%;
+  align-self: center;
   background-color: #ff4040;
   padding: 20px;
 
