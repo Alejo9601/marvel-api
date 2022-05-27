@@ -5,6 +5,7 @@ const useCharComics = () => {
   const {
     consumeComics,
     resetData,
+    loading,
     dataResults: comics,
     dataHeader: comicsHeader,
   } = useMarvelApi();
@@ -25,8 +26,8 @@ const useCharComics = () => {
   }, [refId]);
 
   return comics.length !== 0
-    ? [comics, comicsHeader.total, getComics, setRefId]
-    : [[], 0, getComics, setRefId];
+    ? [comics, comicsHeader.total, getComics, setRefId, loading]
+    : [[], 0, getComics, setRefId, loading];
 };
 
 export default useCharComics;

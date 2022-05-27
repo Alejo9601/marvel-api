@@ -41,7 +41,7 @@ const SectionTitle = styled.div`
 
 const ComicSlider = () => {
   const { charData } = useContext(CharacterContext);
-  const [comics, totalComics, getComics, setRefId] = useCharComics();
+  const [comics, totalComics, getComics, setRefId, loading] = useCharComics();
 
   useEffect(() => {
     setRefId(charData.data.results[0].id);
@@ -60,7 +60,7 @@ const ComicSlider = () => {
             getComics={getComics}
           />
         </SectionWrapper>
-      ) : totalComics !== 0 ? (
+      ) : loading ? (
         <Loader />
       ) : (
         <Message msg="This character has no comics" />
